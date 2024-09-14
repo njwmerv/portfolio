@@ -1,7 +1,7 @@
 import {Image, Text, StyleSheet, View, Pressable, useWindowDimensions} from 'react-native';
-import PillButton from '../Components/PillButton';
+// import PillButton from '../Components/PillButton';
 import PreviewCell from '../Components/PreviewCell';
-import {useNavigate} from 'react-router-dom';
+// import {useNavigate} from 'react-router-dom';
 import {navBarHeight} from '../Helpers/Constants';
 import {openInNewTab} from '../Helpers/Helpers';
 import backgroundImage from './pixel-galaxy.png';
@@ -12,7 +12,7 @@ export default function HomePage(){
 
   const {height} = useWindowDimensions();
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const projectsList = [
     {
