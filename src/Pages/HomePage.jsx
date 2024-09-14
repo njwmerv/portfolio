@@ -100,10 +100,10 @@ export default function HomePage(){
           ))}
         </View>
 
-        <PillButton label="See More"
-                    onPress={() => navigate('/projects')}
-                    buttonStyle={styles.seeMore}
-        />
+        {/*<PillButton label="See More"*/}
+        {/*            onPress={() => navigate('/projects')}*/}
+        {/*            buttonStyle={styles.seeMore}*/}
+        {/*/>*/}
       </View>
 
       <View style={[styles.contentSection, {marginBottom:0}]}>
