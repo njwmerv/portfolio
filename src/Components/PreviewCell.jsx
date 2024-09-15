@@ -9,7 +9,9 @@ export default function PreviewCell({title,
                                       description,
                                       projectLink,
                                       containerStyle,
-                                      descriptionStyle}){
+                                      descriptionStyle,
+                                      buttonText = "Go to Project"
+  }){
 
   // Render
 
@@ -23,13 +25,13 @@ export default function PreviewCell({title,
 
       <Text style={[styles.description, descriptionStyle]}>{description}</Text>
 
-      <PillButton label="Go to Project"
-                  onPress={() => {
-                    if(projectLink) {
-                      openInNewTab(projectLink);
-                    }
-                  }}
-      />
+      {projectLink ?
+        <PillButton label={buttonText}
+                    onPress={() => openInNewTab(projectLink)}
+        />
+        :
+        null
+      }
     </View>
   );
 }
@@ -39,19 +41,19 @@ const styles = StyleSheet.create({
     width:300,
     padding:25,
     alignItems:'center',
-    marginRight:20,
     borderRadius:18,
     backgroundColor:'#FFFFFF',
   },
   title:{
     fontSize:32,
+    textAlign:'center',
     marginBottom:10
   },
   image:{
     width:250,
     height:250,
     borderRadius:18,
-    backgroundColor:'#999999',
+    backgroundColor:'#FFFFFF',
   },
   description:{
     width:'100%',
