@@ -17,16 +17,19 @@ export default function PreviewCell({title,
 
   return (
     <View style={[styles.container, containerStyle]}>
-      <Text style={[styles.title, titleStyle]}>{title}</Text>
+      <View style={styles.content}>
+        <Text style={[styles.title, titleStyle]}>{title}</Text>
 
-      <Image style={[styles.image, imageStyle]}
-             source={{uri:imageUri}}
-      />
+        <Image style={[styles.image, imageStyle]}
+               source={{uri:imageUri}}
+        />
 
-      <Text style={[styles.description, descriptionStyle]}>{description}</Text>
+        <Text style={[styles.description, descriptionStyle]}>{description}</Text>
+      </View>
 
       {projectLink ?
-        <PillButton label={buttonText}
+        <PillButton buttonStyle={styles.button}
+                    label={buttonText}
                     onPress={() => openInNewTab(projectLink)}
         />
         :
@@ -42,23 +45,26 @@ const styles = StyleSheet.create({
     padding:25,
     alignItems:'center',
     borderRadius:18,
-    backgroundColor:'#FFFFFF',
+    justifyContent:'space-between',
+    backgroundColor:'#efedf5',
   },
   title:{
     fontSize:32,
     textAlign:'center',
+    fontWeight:600,
     marginBottom:10
   },
   image:{
     width:250,
     height:250,
     borderRadius:18,
-    backgroundColor:'#FFFFFF',
   },
   description:{
     width:'100%',
-    height:96,
     fontSize:16,
     marginVertical:10,
+  },
+  button:{
+    margin:0
   }
 });
