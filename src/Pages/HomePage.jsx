@@ -53,11 +53,9 @@ export default function HomePage(){
   return (
     <View style={[styles.contentContainer, {height:height - navBarHeight, backgroundImage:`url(${backgroundImage})`}]}>
       <View style={[styles.contentSection, styles.aboutLeft]}>
-        <Image style={styles.profilePicture}
-               source={{uri:'/2048me.jpg'}}
-        />
-
         <View style={styles.profileTextContainer}>
+          <Text style={[styles.text, styles.profileSubText]}>Hey, I'm</Text>
+
           <Text style={[styles.text, styles.profileNameText]}>Nicanor Josemaria Montoya</Text>
 
           <Text style={[styles.text, styles.profileSubText]}>Developer | Student</Text>
@@ -109,7 +107,7 @@ export default function HomePage(){
       <View style={[styles.contentSection, {marginBottom:0}]}>
         <Text style={[styles.text, styles.headerText]}>Experience</Text>
 
-        <Text style={[styles.text]}>Here's a quick timeline of my career so far.</Text>
+        <Text style={[styles.text]}>Here's a quick timeline of my career <b>so far</b>.</Text>
 
         <View style={styles.projectsList}>
           {experiencesList.map((aItem, aIndex) => (
@@ -143,28 +141,29 @@ const styles = StyleSheet.create({
   },
   profileTextContainer:{
     padding:20,
-    alignItems:'flex-start',
+    alignItems:'center',
     marginLeft:20,
     borderRadius:16,
     flexDirection:'column',
     backgroundColor:'#3F72AF'
   },
   profilePicture:{
-    width:250,
-    height:250,
+    width:200,
+    height:200,
     borderRadius:'50%',
   },
   profileNameText:{
-    fontSize:64
+    fontSize:60
   },
   profileSubText:{
-    fontSize:32
+    fontSize:40
   },
   linksContainer:{
     gap:20,
     width:'100%',
     marginTop:20,
-    flexDirection:'row'
+    flexDirection:'row',
+    justifyContent:'space-evenly',
   },
   link:{
     width:72,
