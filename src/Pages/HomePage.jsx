@@ -10,7 +10,7 @@ export default function HomePage(){
 
   // Instance Variables
 
-  const {height} = useWindowDimensions();
+  const {width, height} = useWindowDimensions();
 
   // const navigate = useNavigate();
 
@@ -19,7 +19,7 @@ export default function HomePage(){
       link:'https://github.com/njwmerv/tictactoe-python',
       title:'Tic-Tac-Toe',
       imageUri:'/tic-tac-toe.png',
-      description:'Just simple tic-tac-toe implemented in Python, playable in the command line.'
+      description:'Tic-tac-toe implemented in Python, playable in the command line.'
     },
     {
       link:'https://github.com/njwmerv/pong',
@@ -53,7 +53,7 @@ export default function HomePage(){
   return (
     <View style={[styles.contentContainer, {height:height - navBarHeight, backgroundImage:`url(${backgroundImage})`}]}>
       <View style={[styles.contentSection, styles.aboutLeft]}>
-        <View style={styles.profileTextContainer}>
+        <View style={[styles.profileTextContainer, width < 850 ? {width:width - 60} : {}]}>
           <Text style={[styles.text, styles.profileSubText]}>Hey, I'm</Text>
 
           <Text style={[styles.text, styles.profileNameText]}>Nicanor Josemaria Montoya</Text>
@@ -104,7 +104,7 @@ export default function HomePage(){
         {/*/>*/}
       </View>
 
-      <View style={[styles.contentSection, {marginBottom:0}]}>
+      <View style={[styles.contentSection, styles.experience]}>
         <Text style={[styles.text, styles.headerText]}>Experience</Text>
 
         <Text style={[styles.text]}>Here's a quick timeline of my career <b>so far</b>.</Text>
@@ -127,7 +127,9 @@ export default function HomePage(){
 const styles = StyleSheet.create({
   text:{
     color:'#FFFFFF',
-    fontSize:24
+    fontSize:24,
+    textAlign:'center',
+    marginBottom:10,
   },
   headerText:{
     fontSize:36,
@@ -140,17 +142,11 @@ const styles = StyleSheet.create({
     justifyContent:'center',
   },
   profileTextContainer:{
-    padding:20,
+    padding:30,
     alignItems:'center',
-    marginLeft:20,
-    borderRadius:16,
+    borderRadius:64,
     flexDirection:'column',
-    backgroundColor:'#3F72AF'
-  },
-  profilePicture:{
-    width:200,
-    height:200,
-    borderRadius:'50%',
+    backgroundColor:'#3F72AF60'
   },
   profileNameText:{
     fontSize:60
@@ -171,24 +167,29 @@ const styles = StyleSheet.create({
   },
   contentContainer:{
     width:'100%',
-    padding:20,
+    overflowX:'hidden',
     overflowY:'scroll',
     flexDirection:'column'
   },
   contentSection:{
     width:'100%',
-    height:'100%',
+    height:'fit-content',
+    minHeight:'100%',
     marginBottom:20
   },
   projectsList:{
     gap:20,
-    width:'100%',
+    width:'fit-content',
     margin:'auto',
+    flexWrap:'wrap',
     flexDirection:'row',
     justifyContent:'center'
   },
   seeMore:{
     marginTop:20
+  },
+  experience:{
+    marginBottom:0
   },
   experienceDescription:{
     height:'fit-content',
