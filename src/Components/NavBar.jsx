@@ -17,9 +17,9 @@ export default function NavBar(){
       </Pressable>
 
       <View style={styles.pagesLinks}>
-        <Pressable onPress={() => navigate('/projects')}>
-          <Text style={[styles.link]}>Projects</Text>
-        </Pressable>
+        {/*<Pressable onPress={() => navigate('/projects')}>*/}
+        {/*  <Text style={[styles.link]}>Projects</Text>*/}
+        {/*</Pressable>*/}
       </View>
     </View>
   );
