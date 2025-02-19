@@ -1,59 +1,61 @@
-import {Pressable, StyleSheet, Text, View} from 'react-native';
-import {useNavigate} from 'react-router-dom';
+import {Link} from 'react-router';
 import {navBarHeight} from '../Helpers/Constants';
+import {HOME_PAGE_ROUTE} from '../Utility/routes.js';
 
 export default function NavBar(){
 
-  // Instance Variables
+    // Styles
+    const styles = {
+        navBar: {
+            width: '100%',
+            height: navBarHeight,
+            display: 'flex',
+            alignItems: 'center',
+            flexDirection: 'row',
+            backgroundColor: '#3F72AF'
+        },
+        name: {
+            color: '#FFFFFF',
+            width: 'auto',
+            margin: 0,
+            marginLeft: 20,
+            fontSize: 30,
+            fontWeight: 600,
+            textDecoration:'none',
+            textDecorationLine:'none'
+        },
+        pagesLinks:{
+            gap:20,
+            height:'100%',
+            alignItems:'center',
+            paddingRight:20,
+            flexDirection:'row'
+        },
+        link:{
+            color:'#FFFFFF',
+            fontSize:20,
+            paddingHorizontal:20,
+            fontWeight:600,
+            borderLeftColor:'#FFFFFF',
+            borderLeftWidth:4,
+        }
+    };
 
-  const navigate = useNavigate();
+    // Render
 
-  // Render
+    return (
+        <header>
+            <div style={styles.navBar}>
+                <Link to={HOME_PAGE_ROUTE} style={{textDecoration:'none'}}>
+                    <p style={styles.name}>NJWM</p>
+                </Link>
 
-  return (
-    <View style={[styles.navBar, {height:navBarHeight}]}>
-      <Pressable onPress={() => navigate('/')}>
-        <Text style={[styles.name]}>NJWM</Text>
-      </Pressable>
-
-      <View style={styles.pagesLinks}>
-        {/*<Pressable onPress={() => navigate('/projects')}>*/}
-        {/*  <Text style={[styles.link]}>Projects</Text>*/}
-        {/*</Pressable>*/}
-      </View>
-    </View>
-  );
+                <div style={styles.pagesLinks}>
+                    {/*<Link to={'/projects'}>*/}
+                    {/*  <Text style={styles.link}>Projects</Text>*/}
+                    {/*</Link>*/}
+                </div>
+            </div>
+        </header>
+    );
 }
-
-const styles = StyleSheet.create({
-  navBar:{
-    gap:15,
-    width:'100%',
-    padding:10,
-    paddingLeft:20,
-    alignItems:'center',
-    flexDirection:'row',
-    justifyContent:'flex-start',
-    backgroundColor:'#3F72AF'
-  },
-  name:{
-    color:'#FFFFFF',
-    fontSize:30,
-    fontWeight:600
-  },
-  pagesLinks:{
-    gap:20,
-    height:'100%',
-    alignItems:'center',
-    paddingRight:20,
-    flexDirection:'row'
-  },
-  link:{
-    color:'#FFFFFF',
-    fontSize:20,
-    paddingHorizontal:20,
-    fontWeight:600,
-    borderLeftColor:'#FFFFFF',
-    borderLeftWidth:4,
-  }
-});

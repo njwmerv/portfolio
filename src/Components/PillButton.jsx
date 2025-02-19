@@ -1,30 +1,33 @@
-import {Pressable, StyleSheet, Text} from 'react-native';
 
 export default function PillButton({label,
-                                     onPress,
-                                     textStyle,
-                                     buttonStyle}){
+                                    onPress,
+                                    textStyle,
+                                    buttonStyle}
+    ){
 
-  // Render
+    // Styles
+    const styles = {
+        pressable:{
+            width:'fit-content',
+            margin:'auto',
+            padding:10,
+            borderRadius:18,
+            backgroundColor:'orange',
+            ...buttonStyle
+        },
+        text:{
+            color:'#FFFFFF',
+            fontSize:24,
+            ...textStyle
+        }
+    };
 
-  return (
-    <Pressable style={[styles.pressable, buttonStyle]}
-               onPress={onPress}>
-      <Text style={[styles.text, textStyle]}>{label}</Text>
-    </Pressable>
-  );
+    // Render
+
+    return (
+        <button style={styles.pressable}
+                onClick={onPress}>
+            <p style={styles.text}>{label}</p>
+        </button>
+    );
 }
-
-const styles = StyleSheet.create({
-  pressable:{
-    width:'fit-content',
-    margin:'auto',
-    padding:10,
-    borderRadius:18,
-    backgroundColor:'orange'
-  },
-  text:{
-    color:'#FFFFFF',
-    fontSize:24
-  }
-});

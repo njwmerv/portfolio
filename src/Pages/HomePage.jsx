@@ -1,200 +1,220 @@
-import {Image, Text, StyleSheet, View, Pressable, useWindowDimensions} from 'react-native';
-// import PillButton from '../Components/PillButton';
 import PreviewCell from '../Components/PreviewCell';
-// import {useNavigate} from 'react-router-dom';
-import {navBarHeight} from '../Helpers/Constants';
 import {openInNewTab} from '../Helpers/Helpers';
 import backgroundImage from './pixel-galaxy.png';
 
 export default function HomePage(){
 
-  // Instance Variables
+    // Instance Variables
 
-  const {width, height} = useWindowDimensions();
+    const projectsList = [
+        {
+            link:'https://github.com/njwmerv/tictactoe-python',
+            title:'Tic-Tac-Toe',
+            imageUri:'/tic-tac-toe.png',
+            description:'Tic-tac-toe implemented in Python, playable in the command line.'
+        },
+        {
+            link:'https://github.com/njwmerv/pong',
+            title:'Pong',
+            imageUri:'/pong.png',
+            description:'Pong recreated in Pygame, where you can 1v1 your friend.'
+        },
+        {
+            link:'https://github.com/njwmerv/juman-ping',
+            title:'Juman Ping',
+            imageUri:'/juman-ping.png',
+            description:'2D platformer game for the PC, where players create and break their own platforms.'
+        }
+    ];
 
-  // const navigate = useNavigate();
+    const experiencesList = [
+        {
+            title:'UWaterloo',
+            imageUri:'/uwaterloo-logo.png',
+            description:(
+                <>
+                    <strong>Computer Science, Co-op Program</strong>
+                    <p>Sep 2023 - Apr 2028</p>
+                </>
+            )
+        },
+        {
+            title:'Tuq Inc.',
+            imageUri:'/tuq-logo.png',
+            description:(
+                <>
+                    <strong>Junior Developer</strong>
+                    <p>May 2024 - Aug 2024</p>
+                </>
+            )
+        },
+        {
+            title:'Propel Holdings',
+            imageUri:'/propel-holdings-logo.jpg',
+            description:(
+                <>
+                    <strong>Software Developer Intern</strong>
+                    <p>Jan 2025 - Apr 2025</p>
+                </>
+            )
+        }
+    ];
 
-  const projectsList = [
-    {
-      link:'https://github.com/njwmerv/tictactoe-python',
-      title:'Tic-Tac-Toe',
-      imageUri:'/tic-tac-toe.png',
-      description:'Tic-tac-toe implemented in Python, playable in the command line.'
-    },
-    {
-      link:'https://github.com/njwmerv/pong',
-      title:'Pong',
-      imageUri:'/pong.png',
-      description:'Pong recreated in Pygame, where you can 1v1 your friend.'
-    },
-    {
-      link:'https://github.com/njwmerv/juman-ping',
-      title:'Juman Ping',
-      imageUri:'/juman-ping.png',
-      description:'2D platformer game for the PC, where players create and break their own platforms.'
-    }
-  ];
+    // Styles
+    const styles = {
+        text:{
+            color:'#FFFFFF',
+            fontSize:24,
+            textAlign:'center',
+            marginBottom:10,
+        },
+        headerText:{
+            color:'#FFFFFF',
+            textAlign:'center',
+            marginBottom:10,
+            fontSize:36,
+        },
+        profileTextContainer:{
+            display:'flex',
+            padding:30,
+            alignItems:'center',
+            justifySelf:'center',
+            borderRadius:64,
+            flexDirection:'column',
+            backgroundColor:'#3F72AF60'
+        },
+        profileNameText:{
+            color:'#FFFFFF',
+            textAlign:'center',
+            marginBottom:10,
+            fontSize:60
+        },
+        profileSubText:{
+            color:'#FFFFFF',
+            textAlign:'center',
+            marginBottom:10,
+            fontSize:40
+        },
+        linksContainer:{
+            gap:20,
+            width:'100%',
+            display:'flex',
+            marginTop:20,
+            flexDirection:'row',
+            justifyContent:'space-evenly',
+        },
+        link:{
+            width:72,
+            height:72,
+            backgroundColor:'none'
+        },
+        contentContainer:{
+            width:'100vw',
+            height:'calc(100vh - 60px)',
+            flexWrap:'wrap',
+            overflowX:'hidden',
+            overflowY:'scroll',
+            scrollbarWidth: 'none',
+            msOverflowStyle: 'none',
+            flexDirection:'column',
+            backgroundImage:`url(${backgroundImage})`
+        },
+        contentSection:{
+            width:'100vw',
+            minHeight:'calc(100vh - 60px)',
+            display:'flex',
+            alignItems:'center',
+            flexDirection:'column',
+            justifyContent:'center',
+        },
+        projectsList:{
+            gap:20,
+            width:'fit-content',
+            margin:'auto',
+            display:'flex',
+            flexWrap:'wrap',
+            flexDirection:'row',
+            justifyContent:'center'
+        },
+        seeMore:{
+            marginTop:20
+        },
+        experienceDescription:{
+            height:'fit-content',
+            textAlign:'center',
+        }
+    };
 
-  const experiencesList = [
-    {
-      title:'UWaterloo',
-      imageUri:'/uwaterloo-logo.png',
-      description:'Sep 2023 - Today'
-    },
-    {
-      title:'Tuq Inc.',
-      imageUri:'/tuq-logo.png',
-      description:'May 2024 - Aug 2024'
-    }
-  ];
+    // Render
 
-  // Render
+    return (
+        <div style={styles.contentContainer}>
+            <div style={styles.contentSection}>
+                <div style={styles.profileTextContainer}>
+                    <p style={styles.profileSubText}>Hey, I'm</p>
 
-  return (
-    <View style={[styles.contentContainer, {height:height - navBarHeight, backgroundImage:`url(${backgroundImage})`}]}>
-      <View style={[styles.contentSection, styles.aboutLeft]}>
-        <View style={[styles.profileTextContainer, width < 850 ? {width:width - 60} : {}]}>
-          <Text style={[styles.text, styles.profileSubText]}>Hey, I'm</Text>
+                    <p style={styles.profileNameText}>Nicanor Josemaria W. Montoya</p>
 
-          <Text style={[styles.text, styles.profileNameText]}>Nicanor Josemaria Montoya</Text>
+                    <p style={styles.profileSubText}>Developer | Student</p>
 
-          <Text style={[styles.text, styles.profileSubText]}>Developer | Student</Text>
+                    <div style={styles.linksContainer}>
+                        <a onClick={() => openInNewTab('https://github.com/njwmerv')}>
+                            <img style={styles.link}
+                                 src={'/github-logo-2.png'}
+                                 alt={'Link to GitHub page'}
+                            />
+                        </a>
 
-          <View style={styles.linksContainer}>
-            <Pressable onPress={() => openInNewTab('https://github.com/njwmerv')}>
-              <Image style={styles.link}
-                     source={{uri:'/github-logo-2.png'}}
-              />
-            </Pressable>
+                        <a onClick={() => openInNewTab('https://www.linkedin.com/in/nicanor-montoya-63029a255/')}>
+                            <img style={styles.link}
+                                 src={'/linkedin-logo-2.png'}
+                                 alt={'Link to LinkedIn page'}
+                            />
+                        </a>
 
-            <Pressable onPress={() => openInNewTab('https://www.linkedin.com/in/nicanor-montoya-63029a255/')}>
-              <Image style={styles.link}
-                     source={{uri:'/linkedin-logo-2.png'}}
-              />
-            </Pressable>
+                        <a onClick={() => openInNewTab('mailto:montoya.nicanor04@gmail.com')}>
+                            <img style={styles.link}
+                                 src={'/email-logo-2.png'}
+                                 alt={'Link to send email'}
+                            />
+                        </a>
+                    </div>
+                </div>
+            </div>
 
-            <Pressable onPress={() => openInNewTab('mailto:montoya.nicanor04@gmail.com')}>
-              <Image style={styles.link}
-                     source={{uri:'/email-logo-2.png'}}
-              />
-            </Pressable>
-          </View>
-        </View>
-      </View>
+            <div style={styles.contentSection}>
+                <p style={styles.headerText}>Projects</p>
 
-      <View style={styles.contentSection}>
-        <Text style={[styles.text, styles.headerText]}>Projects</Text>
+                <p style={styles.text}>Here's some of the stuff that I worked on.</p>
 
-        <Text style={[styles.text]}>Here's some of the stuff that I worked on.</Text>
+                <div style={styles.projectsList}>
+                    {projectsList.map((aItem, aIndex) => (
+                        <PreviewCell title={aItem.title}
+                                     key={'projects-list-' + aIndex}
+                                     imageUri={aItem.imageUri}
+                                     description={aItem.description}
+                                     projectLink={aItem.link}
+                        />
+                    ))}
+                </div>
+            </div>
 
-        <View style={styles.projectsList}>
-          {projectsList.map((aItem, aIndex) => (
-            <PreviewCell title={aItem.title}
-                         key={'projects-list-' + aIndex}
-                         imageUri={aItem.imageUri}
-                         description={aItem.description}
-                         projectLink={aItem.link}
-            />
-          ))}
-        </View>
+            <div style={styles.contentSection}>
+                <p style={styles.headerText}>Experience</p>
 
-        {/*<PillButton label="See More"*/}
-        {/*            onPress={() => navigate('/projects')}*/}
-        {/*            buttonStyle={styles.seeMore}*/}
-        {/*/>*/}
-      </View>
+                <p style={styles.text}>Here's a quick timeline of my career <b>so far</b>.</p>
 
-      <View style={[styles.contentSection, styles.experience]}>
-        <Text style={[styles.text, styles.headerText]}>Experience</Text>
-
-        <Text style={[styles.text]}>Here's a quick timeline of my career <b>so far</b>.</Text>
-
-        <View style={styles.projectsList}>
-          {experiencesList.map((aItem, aIndex) => (
-            <PreviewCell title={aItem.title}
-                         key={'experiences-list-' + aIndex}
-                         imageUri={aItem.imageUri}
-                         description={aItem.description}
-                         descriptionStyle={styles.experienceDescription}
-            />
-          ))}
-        </View>
-      </View>
-    </View>
-  );
+                <div style={styles.projectsList}>
+                    {experiencesList.map((aItem, aIndex) => (
+                        <PreviewCell title={aItem.title}
+                                     key={'experiences-list-' + aIndex}
+                                     imageUri={aItem.imageUri}
+                                     description={aItem.description}
+                                     descriptionStyle={styles.experienceDescription}
+                        />
+                    ))}
+                </div>
+            </div>
+        </div>
+    );
 }
-
-const styles = StyleSheet.create({
-  text:{
-    color:'#FFFFFF',
-    fontSize:24,
-    textAlign:'center',
-    marginBottom:10,
-  },
-  headerText:{
-    fontSize:36,
-  },
-  aboutLeft:{
-    gap:20,
-    height:'100%',
-    alignItems:'center',
-    flexDirection:'row',
-    justifyContent:'center',
-  },
-  profileTextContainer:{
-    padding:30,
-    alignItems:'center',
-    borderRadius:64,
-    flexDirection:'column',
-    backgroundColor:'#3F72AF60'
-  },
-  profileNameText:{
-    fontSize:60
-  },
-  profileSubText:{
-    fontSize:40
-  },
-  linksContainer:{
-    gap:20,
-    width:'100%',
-    marginTop:20,
-    flexDirection:'row',
-    justifyContent:'space-evenly',
-  },
-  link:{
-    width:72,
-    height:72
-  },
-  contentContainer:{
-    width:'100%',
-    overflowX:'hidden',
-    overflowY:'scroll',
-    flexDirection:'column'
-  },
-  contentSection:{
-    width:'100%',
-    height:'fit-content',
-    minHeight:'100%',
-    marginBottom:20
-  },
-  projectsList:{
-    gap:20,
-    width:'fit-content',
-    margin:'auto',
-    flexWrap:'wrap',
-    flexDirection:'row',
-    justifyContent:'center'
-  },
-  seeMore:{
-    marginTop:20
-  },
-  experience:{
-    marginBottom:0
-  },
-  experienceDescription:{
-    height:'fit-content',
-    fontSize:24,
-    textAlign:'center',
-    fontWeight:600,
-  }
-});
