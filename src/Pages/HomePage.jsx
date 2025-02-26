@@ -110,7 +110,7 @@ export default function HomePage(){
         },
         contentContainer:{
             width:'100vw',
-            height:'calc(100vh - 60px)',
+            height:'calc(100dvh - 60px)',
             flexWrap:'wrap',
             overflowX:'hidden',
             overflowY:'scroll',
@@ -121,10 +121,11 @@ export default function HomePage(){
         },
         contentSection:{
             width:'100vw',
-            minHeight:'calc(100vh - 60px)',
+            minHeight:'calc(100dvh - 60px)',
             display:'flex',
             alignItems:'center',
             flexDirection:'column',
+            paddingBottom:'20px',
             justifyContent:'center',
         },
         projectsList:{
@@ -153,7 +154,7 @@ export default function HomePage(){
                 <div style={styles.profileTextContainer}>
                     <p style={styles.profileSubText}>Hey, I'm</p>
 
-                    <p style={styles.profileNameText}>Nicanor Josemaria W. Montoya</p>
+                    <p style={styles.profileNameText}>Nicanor Josemaria "Mari" W. Montoya</p>
 
                     <p style={styles.profileSubText}>Developer | Student</p>
 
