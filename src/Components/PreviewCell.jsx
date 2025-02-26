@@ -54,7 +54,8 @@ export default function PreviewCell({title,
             ...descriptionStyle
         },
         button:{
-            margin:0
+            margin:0,
+            marginTop:20
         }
     };
 
