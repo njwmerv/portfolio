@@ -53,7 +53,7 @@ export default function NavBar(){
     // Render
 
     return (
-        <header>
+        <nav>
             <div style={styles.navBar}>
                 <Link to={HOME_PAGE_ROUTE} style={styles.linkComponent}>
                     <p style={styles.name}>NJWM</p>
@@ -67,6 +67,6 @@ export default function NavBar(){
                     </Link>
                 </div>
             </div>
-        </header>
+        </nav>
     );
 }
