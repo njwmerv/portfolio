@@ -1,7 +1,10 @@
+import {Link} from 'react-router';
+import PillButton from '../Components/PillButton.jsx';
 import PreviewCell from '../Components/PreviewCell';
 import {navBarHeight} from '../Helpers/Constants.js';
 import {openInNewTab} from '../Helpers/Helpers';
 import backgroundImage from './pixel-galaxy.png';
+import {PROJECT_PAGE_ROUTE} from '../Utility/routes.js';
 
 export default function HomePage(){
 
@@ -62,6 +65,7 @@ export default function HomePage(){
     ];
 
     // Styles
+
     const styles = {
         text:{
             color:'#FFFFFF',
@@ -139,7 +143,8 @@ export default function HomePage(){
             justifyContent:'center'
         },
         seeMore:{
-            marginTop:20
+            width:'175px',
+            marginTop:'20px',
         },
         experienceDescription:{
             height:'fit-content',
@@ -199,6 +204,12 @@ export default function HomePage(){
                         />
                     ))}
                 </div>
+
+                <Link to={PROJECT_PAGE_ROUTE}>
+                    <PillButton label="See more"
+                                buttonStyle={styles.seeMore}
+                    />
+                </Link>
             </div>
 
             <div style={styles.contentSection}>
