@@ -1,4 +1,5 @@
 import PreviewCell from '../Components/PreviewCell';
+import {navBarHeight} from '../Helpers/Constants.js';
 import {openInNewTab} from '../Helpers/Helpers';
 import backgroundImage from './pixel-galaxy.png';
 
@@ -110,7 +111,7 @@ export default function HomePage(){
         },
         contentContainer:{
             width:'100vw',
-            height:'calc(100dvh - 60px)',
+            height:`calc(100dvh - ${navBarHeight}px)`,
             flexWrap:'wrap',
             overflowX:'hidden',
             overflowY:'scroll',
@@ -121,7 +122,7 @@ export default function HomePage(){
         },
         contentSection:{
             width:'100vw',
-            minHeight:'calc(100dvh - 60px)',
+            minHeight:`calc(100dvh - ${navBarHeight}px)`,
             display:'flex',
             alignItems:'center',
             flexDirection:'column',
