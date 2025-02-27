@@ -1,4 +1,4 @@
-const express = require('express');
+import express from 'express';
 const router = express.Router();
 
 /* GET tags. */
@@ -6,4 +6,4 @@ router.get('/', (req, res) => {
 	res.send('Got a request for tags!');
 });
 
-module.exports = router;
+export default router;

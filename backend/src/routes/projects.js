@@ -1,9 +1,11 @@
-const express = require('express');
+import express from 'express';
 const router = express.Router();
 
-/* GET project page. */
-router.get('/', (req, res) => {
+// @route  GET /projects
+// @desc   Get a list of projects
+// @access Public
+router.get('/', async (req, res) => {
 	res.send('Got a request for projects!');
 });
 
-module.exports = router;
+export default router;
