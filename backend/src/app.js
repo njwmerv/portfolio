@@ -1,4 +1,5 @@
 import path from 'path';
+import dotenv from 'dotenv';
 import logger from 'morgan';
 import express from 'express';
 import tagsRouter from './routes/tags.js';
@@ -8,6 +9,7 @@ import cookieParser from 'cookie-parser';
 import projectsRouter from './routes/projects.js';
 import {fileURLToPath} from 'url';
 
+dotenv.config();
 const __filename = fileURLToPath(import.meta.url); // Get the current file's full path
 const __dirname = path.dirname(__filename); // Get the directory name of the current file
 
