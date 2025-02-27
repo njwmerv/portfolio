@@ -1,5 +1,5 @@
 import {Link} from 'react-router';
-import {navBarHeight} from '../Helpers/Constants.js';
+import {navBarHeight} from '../Helpers/Constants';
 import {HOME_PAGE_ROUTE, PROJECT_PAGE_ROUTE} from '../Utility/routes.js';
 
 export default function NavBar(){

@@ -1,5 +1,5 @@
-import PillButton from './PillButton.jsx';
-import {openInNewTab} from '../Helpers/Helpers.js';
+import PillButton from './PillButton';
+import {openInNewTab} from '../Helpers/Helpers';
 
 export default function PreviewCell({title,
                                      imageUri,

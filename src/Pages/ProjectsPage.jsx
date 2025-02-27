@@ -2,7 +2,7 @@ import {useState} from 'react';
 import Select from 'react-select';
 import PillButton from '../Components/PillButton.jsx';
 import PreviewCell from '../Components/PreviewCell.jsx';
-import {navBarHeight} from '../Helpers/Constants.js';
+import {navBarHeight} from '../Helpers/Constants';
 import backgroundImage from './pixel-galaxy.png';
 
 export default function ProjectPage(){

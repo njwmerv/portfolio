@@ -1,8 +1,8 @@
 import {Link} from 'react-router';
 import PillButton from '../Components/PillButton.jsx';
-import PreviewCell from '../Components/PreviewCell.jsx';
+import PreviewCell from '../Components/PreviewCell';
 import {navBarHeight} from '../Helpers/Constants.js';
-import {openInNewTab} from '../Helpers/Helpers.js';
+import {openInNewTab} from '../Helpers/Helpers';
 import backgroundImage from './pixel-galaxy.png';
 import {PROJECT_PAGE_ROUTE} from '../Utility/routes.js';
 
