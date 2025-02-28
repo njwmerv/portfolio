@@ -2,6 +2,7 @@ import path from 'path';
 import dotenv from 'dotenv';
 import logger from 'morgan';
 import express from 'express';
+import connectDB from './config/database.js';
 import tagsRouter from './routes/tags.js';
 import createError from 'http-errors';
 import indexRouter from './routes/index.js';
@@ -14,10 +15,7 @@ const __filename = fileURLToPath(import.meta.url); // Get the current file's ful
 const __dirname = path.dirname(__filename); // Get the directory name of the current file
 
 const app = express();
-
-app.use('/', indexRouter);
-app.use('/tags', tagsRouter);
-app.use('/projects', projectsRouter);
+await connectDB();
 
 // View engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -28,6 +26,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use('/', indexRouter);
+app.use('/tags', tagsRouter);
+app.use('/projects', projectsRouter);
 
 // Catch 404 and forward to error handler
 app.use(function(req, res, next) {
