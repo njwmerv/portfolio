@@ -18,7 +18,8 @@ const projectSchema = new mongoose.Schema({
 		type:String,
 		required:true
 	},
-	tags:[String]
+	tags:[String],
+	topThree:Boolean
 }, {collection:'projects'});
 
 const Project = mongoose.model('Project', projectSchema);

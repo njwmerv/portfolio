@@ -63,4 +63,18 @@ router.get('/filter', async (req, res) => {
 	}
 });
 
+// @route  GET /projects/top
+// @desc   Get a list of top 3 projects
+// @access Public
+router.get('/top', async (req, res) => {
+	try{
+		const projects = await Project.find({topThree:true});
+		return res.json(projects);
+	}
+	catch(aError){
+		console.log(aError.message);
+		return res.status(500).json({error:'Server error'});
+	}
+});
+
 export default router;
