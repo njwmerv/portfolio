@@ -1,3 +1,4 @@
+import cors from 'cors';
 import path from 'path';
 import dotenv from 'dotenv';
 import logger from 'morgan';
@@ -5,7 +6,6 @@ import express from 'express';
 import connectDB from './config/database.js';
 import tagsRouter from './routes/tags.js';
 import createError from 'http-errors';
-import indexRouter from './routes/index.js';
 import cookieParser from 'cookie-parser';
 import projectsRouter from './routes/projects.js';
 import {fileURLToPath} from 'url';
@@ -17,17 +17,12 @@ const __dirname = path.dirname(__filename); // Get the directory name of the cur
 const app = express();
 await connectDB();
 
-// View engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
-
+app.use(cors());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
-app.use('/', indexRouter);
 app.use('/tags', tagsRouter);
 app.use('/projects', projectsRouter);
 
