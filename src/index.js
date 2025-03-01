@@ -1,10 +1,10 @@
 import './index.css';
 import React from 'react';
-import NavBar from './Components/NavBar';
-import HomePage from './Pages/HomePage';
+import NavBar from './Components/NavBar.jsx';
+import HomePage from './Pages/HomePage.jsx';
 import ReactDOM from 'react-dom/client';
-import ProjectPage from './Pages/ProjectsPage';
-import reportWebVitals from './reportWebVitals';
+import ProjectPage from './Pages/ProjectsPage.jsx';
+import reportWebVitals from './reportWebVitals.js';
 import {createBrowserRouter, RouterProvider} from 'react-router-dom';
 
 const router = createBrowserRouter([

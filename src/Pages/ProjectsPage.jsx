@@ -1,77 +1,77 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import Select from 'react-select';
-import PillButton from '../Components/PillButton.jsx';
 import PreviewCell from '../Components/PreviewCell.jsx';
-import {navBarHeight} from '../Helpers/Constants';
+import {navBarHeight} from '../Helpers/Constants.js';
 import backgroundImage from './pixel-galaxy.png';
+import {API_URL, GET_PROJECTS_ROUTE, GET_TAGS_ROUTE} from '../Utility/routes.js';
 
 export default function ProjectPage(){
 
 	// Instance Variables
 
 	const [projects, setProjects] = useState([]);
-	const [filteredProjects, setFilteredProjects] = useState([
-		{
-			link:'https://github.com/njwmerv/tictactoe-python',
-			title:'Tic-Tac-Toe',
-			imageUri:'/tic-tac-toe.png',
-			description:'Tic-tac-toe implemented in Python, playable in the command line.'
-		},
-		{
-			link:'https://github.com/njwmerv/pong',
-			title:'Pong',
-			imageUri:'/pong.png',
-			description:'Pong recreated in Pygame, where you can 1v1 your friend. Pong recreated in Pygame, where you can 1v1 your friend. Pong recreated in Pygame, where you can 1v1 your friend. Pong recreated in Pygame, where you can 1v1 your friend. Pong recreated in Pygame, where you can 1v1 your friend. Pong recreated in Pygame, where you can 1v1 your friend.'
-		},
-		{
-			link:'https://github.com/njwmerv/juman-ping',
-			title:'Juman Ping',
-			imageUri:'/juman-ping.png',
-			description:'2D platformer game for the PC, where players create and break their own platforms.'
-		},
-		{
-			link:'https://github.com/njwmerv/tictactoe-python',
-			title:'Tic-Tac-Toe',
-			imageUri:'/tic-tac-toe.png',
-			description:'Tic-tac-toe implemented in Python, playable in the command line.'
-		},
-		{
-			link:'https://github.com/njwmerv/pong',
-			title:'Pong',
-			imageUri:'/pong.png',
-			description:'Pong recreated in Pygame, where you can 1v1 your friend.'
-		},
-		{
-			link:'https://github.com/njwmerv/juman-ping',
-			title:'Juman Ping',
-			imageUri:'/juman-ping.png',
-			description:'2D platformer game for the PC, where players create and break their own platforms.'
-		},
-		{
-			link:'https://github.com/njwmerv/tictactoe-python',
-			title:'Tic-Tac-Toe',
-			imageUri:'/tic-tac-toe.png',
-			description:'Tic-tac-toe implemented in Python, playable in the command line.'
-		},
-		{
-			link:'https://github.com/njwmerv/pong',
-			title:'Pong',
-			imageUri:'/pong.png',
-			description:'Pong recreated in Pygame, where you can 1v1 your friend.'
-		},
-		{
-			link:'https://github.com/njwmerv/juman-ping',
-			title:'Juman Ping',
-			imageUri:'/juman-ping.png',
-			description:'2D platformer game for the PC, where players create and break their own platforms.'
-		}
-	]);
-	const [tags, setTags] = useState([
-		{label:'Python', value:'python'},
-		{label:'C++', value:'c++'}
-	]);
+	const [searchString, setSearchString] = useState('');
+	const [filteredProjects, setFilteredProjects] = useState([]);
+	const [tags, setTags] = useState([]);
 	const [tagsInput, setTagsInput] = useState('');
 	const [selectedTags, setSelectedTags] = useState(null);
+
+	// Helpers
+
+	async function fetchProjects(){
+		const URL = `${API_URL}${GET_PROJECTS_ROUTE}`;
+		const response = await fetch(URL);
+		if(!response.ok){
+			console.log('Failed to fetch projects:', response.statusText);
+			return;
+		}
+		const record = await response.json();
+		if(!record){
+			console.log('Projects not found');
+			return;
+		}
+		setProjects(record);
+		setFilteredProjects(record);
+	}
+
+	async function fetchTags(){
+		const URL = `${API_URL}${GET_TAGS_ROUTE}`;
+		const response = await fetch(URL);
+		if(!response.ok){
+			console.log('Failed to fetch tags:', response.statusText);
+			return;
+		}
+		const record = await response.json();
+		if(!record){
+			console.log('Tags not found');
+			return;
+		}
+		setTags(record.map((aTag) => {return {value:aTag, label:aTag}}));
+	}
+
+	// Effects
+
+	useEffect(() => {
+		fetchProjects();
+		fetchTags();
+	}, []);
+
+	useEffect(() => {
+		if(!searchString && !selectedTags){
+			setFilteredProjects(projects);
+			return;
+		}
+		let filtered = [...projects];
+		if(searchString){
+			const regex = new RegExp(searchString, 'i');
+			filtered = projects.filter((aProject) => aProject.name.match(regex));
+		}
+		if(selectedTags){
+			const selected = selectedTags.map((aSelection) => aSelection.value);
+			filtered = filtered.filter((aProject) => selected.every((tag) => aProject.tags.includes(tag)));
+		}
+		setFilteredProjects(filtered);
+	}, [searchString, selectedTags]);
 
 	// Styles
 
@@ -103,7 +103,7 @@ export default function ProjectPage(){
 			flexDirection:'row'
 		},
 		searchInput:{
-			width:'calc(100% - 110px)',
+			width:'100%',
 			fontSize:'24px',
 			height:'2em',
 			borderRadius:'16px',
@@ -152,12 +152,9 @@ export default function ProjectPage(){
 				<div style={styles.searchContainer}>
 					<input name="search"
 					       style={styles.searchInput}
+					       value={searchString}
+					       onInput={(aEvent) => setSearchString(aEvent.target.value)}
 					       placeholder="Search for a project..."
-					/>
-
-					<PillButton label="Search"
-					            onPress={null}
-					            buttonStyle={styles.searchButton}
 					/>
 				</div>
 
@@ -167,7 +164,7 @@ export default function ProjectPage(){
 					        onChange={setSelectedTags}
 					        styles={styles.tagInput}
 					        placeholder="Select tags"
-					        isMulti={true}
+					        isMulti
 					        isClearable={true}
 					        isSearchable={true}
 					        inputValue={tagsInput}
@@ -181,9 +178,9 @@ export default function ProjectPage(){
 				:
 				<div style={styles.grid}>
 					{filteredProjects.map((aItem, aIndex) => (
-						<PreviewCell title={aItem.title}
+						<PreviewCell title={aItem.name}
 						             key={'projects-list-' + aIndex}
-						             imageUri={aItem.imageUri}
+						             imageUri={aItem.image}
 						             description={aItem.description}
 						             projectLink={aItem.link}
 						             containerStyle={styles.cell}
