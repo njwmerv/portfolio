@@ -52,12 +52,12 @@ export default function HomePage(){
         const URL = `${API_URL}${GET_PROJECTS_ROUTE}${GET_TOP_THREE_PROJECTS}`;
         const response = await fetch(URL);
         if(!response.ok){
-            console.log('MARI Failed to fetch projects:', response.statusText);
+            console.log('Failed to fetch projects:', response.statusText);
             return;
         }
         const record = await response.json();
         if(!record){
-            console.log('MARI Projects not found');
+            console.log('Projects not found');
             return;
         }
         setProjectsList(record);

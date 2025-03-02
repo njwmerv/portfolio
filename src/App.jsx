@@ -6,7 +6,7 @@ import {Routes, Route} from 'react-router';
 import {PROJECT_PAGE_ROUTE} from './Utility/routes.js';
 
 export default function App() {
-    console.log('MARI API URL:', import.meta.env.VITE_BACKEND_API_URL);
+
     // Render
 
     return (
