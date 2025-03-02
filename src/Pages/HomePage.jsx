@@ -1,31 +1,17 @@
-import PreviewCell from '../Components/PreviewCell';
-import {openInNewTab} from '../Helpers/Helpers';
+import {useEffect, useState} from 'react';
+import {Link} from 'react-router';
+import PillButton from '../Components/PillButton.jsx';
+import PreviewCell from '../Components/PreviewCell.jsx';
+import {navBarHeight} from '../Helpers/Constants.js';
+import {openInNewTab} from '../Helpers/Helpers.js';
 import backgroundImage from './pixel-galaxy.png';
+import {API_URL, GET_PROJECTS_ROUTE, GET_TOP_THREE_PROJECTS, PROJECT_PAGE_ROUTE} from '../Utility/routes.js';
 
 export default function HomePage(){
 
     // Instance Variables
 
-    const projectsList = [
-        {
-            link:'https://github.com/njwmerv/tictactoe-python',
-            title:'Tic-Tac-Toe',
-            imageUri:'/tic-tac-toe.png',
-            description:'Tic-tac-toe implemented in Python, playable in the command line.'
-        },
-        {
-            link:'https://github.com/njwmerv/pong',
-            title:'Pong',
-            imageUri:'/pong.png',
-            description:'Pong recreated in Pygame, where you can 1v1 your friend.'
-        },
-        {
-            link:'https://github.com/njwmerv/juman-ping',
-            title:'Juman Ping',
-            imageUri:'/juman-ping.png',
-            description:'2D platformer game for the PC, where players create and break their own platforms.'
-        }
-    ];
+    const [projectsList, setProjectsList] = useState([]);
 
     const experiencesList = [
         {
@@ -60,7 +46,31 @@ export default function HomePage(){
         }
     ];
 
+    // Helpers
+
+    async function fetchProjects(){
+        const URL = `${API_URL}${GET_PROJECTS_ROUTE}${GET_TOP_THREE_PROJECTS}`;
+        const response = await fetch(URL);
+        if(!response.ok){
+            console.log('Failed to fetch projects:', response.statusText);
+            return;
+        }
+        const record = await response.json();
+        if(!record){
+            console.log('Projects not found');
+            return;
+        }
+        setProjectsList(record);
+    }
+
+    // Effects
+
+    useEffect(() => {
+        fetchProjects();
+    }, []);
+
     // Styles
+
     const styles = {
         text:{
             color:'#FFFFFF',
@@ -110,7 +120,7 @@ export default function HomePage(){
         },
         contentContainer:{
             width:'100vw',
-            height:'calc(100vh - 60px)',
+            height:`calc(100dvh - ${navBarHeight}px)`,
             flexWrap:'wrap',
             overflowX:'hidden',
             overflowY:'scroll',
@@ -121,10 +131,11 @@ export default function HomePage(){
         },
         contentSection:{
             width:'100vw',
-            minHeight:'calc(100vh - 60px)',
+            minHeight:`calc(100dvh - ${navBarHeight}px)`,
             display:'flex',
             alignItems:'center',
             flexDirection:'column',
+            paddingBottom:'20px',
             justifyContent:'center',
         },
         projectsList:{
@@ -137,7 +148,8 @@ export default function HomePage(){
             justifyContent:'center'
         },
         seeMore:{
-            marginTop:20
+            width:'175px',
+            marginTop:'20px',
         },
         experienceDescription:{
             height:'fit-content',
@@ -153,7 +165,7 @@ export default function HomePage(){
                 <div style={styles.profileTextContainer}>
                     <p style={styles.profileSubText}>Hey, I'm</p>
 
-                    <p style={styles.profileNameText}>Nicanor Josemaria W. Montoya</p>
+                    <p style={styles.profileNameText}>Nicanor Josemaria "Mari" W. Montoya</p>
 
                     <p style={styles.profileSubText}>Developer | Student</p>
 
@@ -189,14 +201,20 @@ export default function HomePage(){
 
                 <div style={styles.projectsList}>
                     {projectsList.map((aItem, aIndex) => (
-                        <PreviewCell title={aItem.title}
+                        <PreviewCell title={aItem.name}
                                      key={'projects-list-' + aIndex}
-                                     imageUri={aItem.imageUri}
+                                     imageUri={aItem.image}
                                      description={aItem.description}
                                      projectLink={aItem.link}
                         />
                     ))}
                 </div>
+
+                <Link to={PROJECT_PAGE_ROUTE}>
+                    <PillButton label="See more"
+                                buttonStyle={styles.seeMore}
+                    />
+                </Link>
             </div>
 
             <div style={styles.contentSection}>

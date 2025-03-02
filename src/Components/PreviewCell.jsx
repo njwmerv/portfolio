@@ -1,5 +1,5 @@
-import PillButton from './PillButton';
-import {openInNewTab} from '../Helpers/Helpers';
+import PillButton from './PillButton.jsx';
+import {openInNewTab} from '../Helpers/Helpers.js';
 
 export default function PreviewCell({title,
                                      imageUri,
@@ -54,7 +54,8 @@ export default function PreviewCell({title,
             ...descriptionStyle
         },
         button:{
-            margin:0
+            margin:0,
+            marginTop:20
         }
     };
 
