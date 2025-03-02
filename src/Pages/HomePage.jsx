@@ -116,6 +116,7 @@ export default function HomePage(){
         },
         link:{
             width:72,
+            cursor:'pointer',
             height:72,
             backgroundColor:'none'
         },

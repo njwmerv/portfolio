@@ -9,6 +9,7 @@ export default function PillButton({label,
     const styles = {
         pressable:{
             width:'fit-content',
+            cursor:'pointer',
             margin:'auto',
             padding:10,
             borderRadius:18,
