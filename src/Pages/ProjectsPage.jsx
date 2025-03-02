@@ -20,7 +20,6 @@ export default function ProjectPage(){
 
 	async function fetchProjects(){
 		const URL = `${API_URL}${GET_PROJECTS_ROUTE}`;
-		console.log('MARI APIURL', URL);
 		const response = await fetch(URL);
 		if(!response.ok){
 			console.log('Failed to fetch projects:', response.statusText);
