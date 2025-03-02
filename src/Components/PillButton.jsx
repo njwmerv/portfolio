@@ -9,15 +9,19 @@ export default function PillButton({label,
     const styles = {
         pressable:{
             width:'fit-content',
+            cursor:'pointer',
             margin:'auto',
             padding:10,
+            borderWidth:2,
+            borderColor:'#162952',
             borderRadius:18,
-            backgroundColor:'orange',
+            backgroundColor:'#2A4B91',
             ...buttonStyle
         },
         text:{
             color:'#FFFFFF',
             fontSize:24,
+            fontWeight:600,
             ...textStyle
         }
     };

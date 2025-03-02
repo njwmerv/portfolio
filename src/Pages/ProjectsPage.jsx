@@ -86,7 +86,6 @@ export default function ProjectPage(){
 			alignItems:'center',
 			scrollbarWidth:'none',
 			msOverflowStyle:'none',
-			paddingBottom:'20px',
 			backgroundImage:`url(${backgroundImage})`
 		},
 		filtersContainer:{
@@ -128,9 +127,10 @@ export default function ProjectPage(){
 			})
 		},
 		grid:{
-			gap:'30px',
+			gap:'20px',
 			width:'95vw',
 			display:'grid',
+			paddingBottom:'20px',
 			justifyContent:'space-evenly',
 			gridTemplateColumns:'repeat(auto-fit, minmax(325px, 1fr))',
 			gridAutoRows:'auto'

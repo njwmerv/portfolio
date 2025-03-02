@@ -83,6 +83,7 @@ export default function HomePage(){
             textAlign:'center',
             marginBottom:10,
             fontSize:36,
+            fontWeight:600
         },
         profileTextContainer:{
             display:'flex',
@@ -115,6 +116,7 @@ export default function HomePage(){
         },
         link:{
             width:72,
+            cursor:'pointer',
             height:72,
             backgroundColor:'none'
         },
@@ -197,21 +199,27 @@ export default function HomePage(){
             <div style={styles.contentSection}>
                 <p style={styles.headerText}>Projects</p>
 
-                <p style={styles.text}>Here's some of the stuff that I worked on.</p>
+                {projectsList.length > 0 ?
+                    <>
+                        <p style={styles.text}>Here's some of the stuff that I worked on.</p>
 
-                <div style={styles.projectsList}>
-                    {projectsList.map((aItem, aIndex) => (
-                        <PreviewCell title={aItem.name}
-                                     key={'projects-list-' + aIndex}
-                                     imageUri={aItem.image}
-                                     description={aItem.description}
-                                     projectLink={aItem.link}
-                        />
-                    ))}
-                </div>
+                        <div style={styles.projectsList}>
+                            {projectsList.map((aItem, aIndex) => (
+                                <PreviewCell title={aItem.name}
+                                             key={'projects-list-' + aIndex}
+                                             imageUri={aItem.image}
+                                             description={aItem.description}
+                                             projectLink={aItem.link}
+                                />
+                            ))}
+                        </div>
+                    </>
+                    :
+                    null
+                }
 
                 <Link to={PROJECT_PAGE_ROUTE}>
-                    <PillButton label="See more"
+                    <PillButton label={projectsList.length > 0 ? "See more" : "See projects"}
                                 buttonStyle={styles.seeMore}
                     />
                 </Link>
