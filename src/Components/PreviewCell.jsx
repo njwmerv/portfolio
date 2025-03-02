@@ -22,7 +22,7 @@ export default function PreviewCell({title,
             flexDirection:'column',
             alignItems:'center',
             justifyContent:'space-between',
-            backgroundColor:'#efedf5',
+            backgroundColor:'#FFFFFFDD',
             ...containerStyle
         },
         content:{
