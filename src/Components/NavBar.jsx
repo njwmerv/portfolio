@@ -1,13 +1,14 @@
+import {useState} from 'react';
 import {Link} from 'react-router';
 import {navBarHeight} from '../Helpers/Constants.js';
 import {HOME_PAGE_ROUTE, PROJECT_PAGE_ROUTE} from '../Utility/routes.js';
 
 export default function NavBar(){
 
-    // Styles
+    // Style
 
     const styles = {
-        navBar: {
+        navBar:{
             width:'100%',
             height:navBarHeight,
             display:'flex',
@@ -15,11 +16,7 @@ export default function NavBar(){
             flexDirection:'row',
             backgroundColor:'#3F72AF'
         },
-        linkComponent:{
-            textDecoration:'none'
-        },
-        name: {
-            color:'#FFFFFF',
+        name:{
             width:'auto',
             margin:0,
             marginLeft:20,
@@ -39,14 +36,6 @@ export default function NavBar(){
             alignItems:'center',
             paddingRight:20,
             flexDirection:'row'
-        },
-        link:{
-            color:'#FFFFFF',
-            margin:0,
-            fontSize:20,
-            fontWeight:600,
-            marginLeft:20,
-            paddingHorizontal:20,
         }
     };
 
@@ -55,18 +44,64 @@ export default function NavBar(){
     return (
         <nav>
             <div style={styles.navBar}>
-                <Link to={HOME_PAGE_ROUTE} style={styles.linkComponent}>
-                    <p style={styles.name}>NJWM</p>
-                </Link>
+                <NavLink to={HOME_PAGE_ROUTE}
+                         text="NJWM"
+                         textStyle={styles.name}
+                />
 
                 <div style={styles.verticalLine}></div>
 
                 <div style={styles.pagesLinks}>
-                    <Link to={PROJECT_PAGE_ROUTE} style={styles.linkComponent}>
-                      <p style={styles.link}>Projects</p>
-                    </Link>
+                    <NavLink to={PROJECT_PAGE_ROUTE}
+                             text="Projects"
+                    />
                 </div>
             </div>
         </nav>
+    );
+}
+
+const NavLink = ({to, text, textStyle}) => {
+
+    // Instance Variable
+
+    const [hovered, setHovered] = useState(false);
+
+    // Helper
+
+    const mouseEnter = () => setHovered(true);
+
+    const mouseLeave = () => setHovered(false);
+
+    // Style
+
+    const styles = {
+        linkComponent:{
+            textDecoration:'none'
+        },
+        link:{
+            color:(
+                hovered ?
+                    '#FFFFFF88'
+                    :
+                    '#FFFFFF'
+            ),
+            margin:0,
+            fontSize:20,
+            fontWeight:600,
+            marginLeft:20,
+            paddingHorizontal:20,
+            ...textStyle
+        }
+    };
+
+    // Render
+
+    return (
+        <Link to={to} style={styles.linkComponent}
+              onMouseEnter={mouseEnter}
+              onMouseLeave={mouseLeave}>
+            <p style={styles.link}>{text}</p>
+        </Link>
     );
 }
