@@ -1,9 +1,20 @@
+import {useState} from 'react';
 
 export default function PillButton({label,
                                     onPress,
                                     textStyle,
                                     buttonStyle}
-    ){
+){
+
+    // Instance Variables
+
+    const [hovered, setHovered] = useState(false);
+
+    // Helper
+
+    const mouseEnter = () => setHovered(true);
+
+    const mouseLeave = () => setHovered(false);
 
     // Styles
     const styles = {
@@ -13,7 +24,18 @@ export default function PillButton({label,
             margin:'auto',
             padding:10,
             borderWidth:2,
-            borderColor:'#162952',
+            boxShadow:(
+                hovered ?
+                    '1px 1px 1px 1px #162952'
+                    :
+                    '3px 3px 0 0 #162952'
+            ),
+            transform:(
+                hovered ?
+                    'translate(1px, 1px)'
+                    :
+                    'none'
+            ),
             borderRadius:18,
             backgroundColor:'#2A4B91',
             ...buttonStyle
@@ -30,7 +52,9 @@ export default function PillButton({label,
 
     return (
         <button style={styles.pressable}
-                onClick={onPress}>
+                onClick={onPress}
+                onMouseEnter={mouseEnter}
+                onMouseLeave={mouseLeave}>
             <p style={styles.text}>{label}</p>
         </button>
     );
