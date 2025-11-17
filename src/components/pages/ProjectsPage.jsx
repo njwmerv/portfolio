@@ -1,9 +1,9 @@
 import {useEffect, useState} from 'react';
 import Select from 'react-select';
-import PreviewCell from '../Components/PreviewCell.jsx';
-import {navBarHeight} from '../Helpers/Constants.js';
+import PreviewCell from '../PreviewCell.jsx';
+import {navBarHeight} from '../../Helpers/Constants.js';
 import backgroundImage from './pixel-galaxy.png';
-import {API_URL, GET_PROJECTS_ROUTE, GET_TAGS_ROUTE} from '../Utility/routes.js';
+import {API_URL, GET_PROJECTS_ROUTE, GET_TAGS_ROUTE} from '../../utility/routes.js';
 
 export default function ProjectPage(){
 

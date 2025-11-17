@@ -1,7 +1,7 @@
 import {useState} from 'react';
 import {Link} from 'react-router';
 import {navBarHeight} from '../Helpers/Constants.js';
-import {HOME_PAGE_ROUTE, PROJECT_PAGE_ROUTE} from '../Utility/routes.js';
+import {HOME_PAGE_ROUTE, PROJECT_PAGE_ROUTE} from '../utility/routes.js';
 
 export default function NavBar(){
 
