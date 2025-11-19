@@ -1,0 +1,125 @@
+@import '../_variables.scss';
+
+.contentContainer {
+    width: 100dvw ;
+    height: 100dvh;
+    
+    display: flex;
+    align-content: center;
+    flex-direction: column;
+    
+    color: white;
+    background-color: $primary-colour;
+    
+    overflow-x: hidden;
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+
+.nameContainer {
+    width: 100dvw;
+    height: 17.5dvh;
+    
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    
+    background-color: $secondary-colour;
+    
+    z-index: 2;
+    
+    .subtitle {
+        font-size: 1rem;
+    }
+    
+    .name {
+        margin: 0;
+        
+        font-size: 3rem;
+    }
+}
+
+.columns {
+    display: flex;
+    flex-direction: row;
+}
+
+.leftColumn {
+    width: 60dvw;
+    height: 75dvh;
+    
+    background-color: $primary-colour-50;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+    
+    border-top-right-radius: 75dvh;
+    border-bottom-right-radius: 75dvh;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    
+    z-index: 1;
+}
+
+.headshot {
+    border-radius: 50%;
+    
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+.rightColumn {
+    width: 40dvw;
+    height: calc(75dvh - 64px);
+    padding-top: 32px;
+    padding-bottom: 32px;
+    
+    gap: 16px;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+}
+
+.link {
+    width: fit-content;
+    margin: 0;
+    
+    color: white;
+    text-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    
+    font-size: 32px;
+    font-weight: 800;
+    text-decoration: none;
+    
+    animation: flyOut 1.5s cubic-bezier(0.25, 0.1, 0.25, 1.0) 0.1s forwards;
+    
+    :hover {
+        color: $primary-colour-25;
+        text-shadow: 0 8px 32px rgba(0, 0, 0, 0.9);
+    }
+}
+
+.footer {
+    width: 100dvw;
+    height: 7.5dvh;
+    
+    background-color: $secondary-colour;
+    
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    
+    z-index: 2;
+}
+
+// Animations
+@keyframes flyOut {
+    from {
+        transform: translateX(-300px);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
