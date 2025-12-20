@@ -1,66 +1,98 @@
-import Link from 'next/link'
 import Image from 'next/image'
 
-import styles from '../style/pages/home.module.scss'
+import styles from '@/style/pages/home.module.scss'
+import PillButton from '@/components/layout-ui/pill-button.tsx'
+import Link from 'next/link.js'
+import { EXPERIENCE_URL, PROJECTS_URL } from '@/helpers/constants.ts'
 
-interface HomePageProps {}
-
-interface Link {
-	url: string
-	title: string
-}
-
-const links: Link[] = [
-	{ title: 'Skills', url: '/skills' },
-	{ title: 'Projects', url: '/projects' },
-	{ title: 'Experiences', url: '/experiences' },
-	{ title: 'Contact Me', url: '/contact-me' },
-	{ title: 'Other', url: '/other' },
-]
-
-const calculateIndex = (index: number): number => {
-	const factor: number = links.length - 1
-	return 1 - Math.abs(2 * index - factor) / factor
-}
-
-export default function HomePage({}: HomePageProps) {
+export default function HomePage() {
 	return (
-		<div className={styles.contentContainer}>
-			<div className={styles.nameContainer}>
-				<p className={styles.subtitle}>Hi! I'm</p>
-				<h1 className={styles.name}>Nicanor Josemaria "Mari" W. Montoya</h1>
-			</div>
-
-			<div className={styles.columns}>
-				<div className={styles.leftColumn}>
+		<div className={styles.twoColumn}>
+			<div className={styles.personalDetails}>
+				<div className={styles.topHalf}>
 					<Image
 						className={styles.headshot}
 						src={'/2048me.jpg'}
-						alt={'Image of Mari Montoya'}
-						width={300}
-						height={300}
+						alt={'Mari-Montoya-headshot'}
+						width={250}
+						height={250}
+						priority
+						fetchPriority="high"
 					/>
+					<div className={styles.name}>
+						<p>Hi! I'm</p>
+						<h1>
+							<b>N</b>icanor <b>J</b>osemaria "Mari" <b>W</b>. <b>M</b>ontoya
+						</h1>
+					</div>
 				</div>
-				<div className={styles.rightColumn}>
-					{links.map((value: Link, index: number) => {
-						return (
-							<Link
-								key={`link-${index}`}
-								href={value.url}
-								className={styles.link}
-								style={{
-									marginLeft: `${calculateIndex(index) * 64}px`,
-								}}
-							>
-								<h2 className={styles.link}>{value.title}</h2>
-							</Link>
-						)
-					})}
+
+				<div className={styles.aboutMe}>
+					<h2>Education</h2>
+					<div className={styles.aboutRow}>
+						<p>University of Waterloo</p>
+						<p>2023 – 2028</p>
+					</div>
+					<div className={styles.aboutRow}>
+						<p>Computer Science, Co-op</p>
+						<p>CGPA: 90.80</p>
+					</div>
+
+					<h2>Languages</h2>
+					<p>Python, JavaScript, C/C++, Java, HTML, CSS</p>
+					<p>French, Tagalog</p>
+
+					<h2>Frameworks</h2>
+					<p>React, Next, Spring MVC, Express, React Native</p>
 				</div>
 			</div>
 
-			<div className={styles.footer}>
-				<p>© 2025 Nicanor Josemaria W. Montoya. All rights reserved.</p>
+			<div className={styles.bentoBox}>
+				<div className={styles.tl}>
+					<div>
+						<h2>Projects</h2>
+						<p>stuff I've worked on</p>
+					</div>
+
+					<Link href={PROJECTS_URL}>
+						<PillButton label="See More" />
+					</Link>
+				</div>
+
+				<div className={styles.tr}>
+					<div>
+						<h2>Experience</h2>
+						<p>places I've worked at</p>
+					</div>
+
+					<Link href={EXPERIENCE_URL}>
+						<PillButton label="See More" />
+					</Link>
+				</div>
+
+				<div className={styles.bl}>
+					<h2>Hobbies & Other Stuff</h2>
+				</div>
+
+				<div className={styles.br}>
+					<h2>Links</h2>
+
+					<div className={styles.linksContainer}>
+						<Link href="https://github.com/njwmerv/" target="_blank">
+							<Image alt="link-to-github" src="/github-logo-2.png" width={50} height={50} />
+						</Link>
+
+						<Link href="https://www.linkedin.com/in/nicanor-josemaria-montoya-63029a255/" target="_blank">
+							<Image alt="link-to-linkedin" src="/linkedin-logo-2.png" width={50} height={50} />
+						</Link>
+
+						<Link href="mailto:montoya.nicanor04@gmail.com" target="_blank">
+							<Image alt="link-to-linkedin" src="/email-logo-2.png" width={50} height={50} />
+						</Link>
+					</div>
+
+					<p>Feel free to reach out or check out my other sites!</p>
+				</div>
 			</div>
 		</div>
 	)

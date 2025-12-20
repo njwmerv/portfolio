@@ -1,0 +1,16 @@
+@import '../_variables.scss';
+
+.footer {
+    width: 100dvw;
+    height: $navbar-height;
+    
+    color: dimgray;
+    background-color: $secondary-colour-25;
+    
+    font-weight: bold;
+    
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+}
