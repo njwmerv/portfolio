@@ -71,7 +71,7 @@ export default function PreviewCell({title,
                      src={imageUri}
                 />
 
-                <p style={styles.description}>{description}</p>
+                <div style={styles.description}>{description}</div>
             </div>
 
             {projectLink ?

@@ -30,6 +30,7 @@ export default function HomePage(){
             description:(
                 <>
                     <strong>Junior Developer</strong>
+                    <p>Core Team</p>
                     <p>May 2024 - Aug 2024</p>
                 </>
             )
@@ -40,7 +41,29 @@ export default function HomePage(){
             description:(
                 <>
                     <strong>Software Developer Intern</strong>
+                    <p>Web Team</p>
                     <p>Jan 2025 - Apr 2025</p>
+                </>
+            )
+        },
+        {
+            title:'Vivid Seats Inc.',
+            imageUri:'/vividseats-logo.png',
+            description:(
+                <>
+                    <strong>Fullstack Engineering Co-op</strong>
+                    <p>B2C Web-Distribution Team</p>
+                    <p>Sep 2025 - Dec 2025</p>
+                </>
+            )
+        },
+        {
+            title:'UW Quizbowl Club',
+            imageUri:'/uwqb-logo.jpg',
+            description:(
+                <>
+                    <strong>Webmaster</strong>
+                    <p>Jan 2026 - Apr 2026</p>
                 </>
             )
         }
@@ -51,16 +74,21 @@ export default function HomePage(){
     async function fetchProjects(){
         const URL = `${API_URL}${GET_PROJECTS_ROUTE}${GET_TOP_THREE_PROJECTS}`;
         const response = await fetch(URL);
-        if(!response.ok){
-            console.log('Failed to fetch projects:', response.statusText);
-            return;
+        try {
+            if(!response.ok){
+                console.log('Failed to fetch projects:', response.statusText);
+                return;
+            }
+            const record = await response.json();
+            if(!record){
+                console.log('Projects not found');
+                return;
+            }
+            setProjectsList(record);
         }
-        const record = await response.json();
-        if(!record){
-            console.log('Projects not found');
-            return;
+        catch (e) {
+            console.log('Error fetching projects', e);
         }
-        setProjectsList(record);
     }
 
     // Effects

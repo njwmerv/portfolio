@@ -14,12 +14,12 @@ export default function NavBar(){
             display:'flex',
             alignItems:'center',
             flexDirection:'row',
-            backgroundColor:'#3F72AF'
+            backgroundColor:'#3F72AF',
+            paddingLeft: 20,
         },
         name:{
             width:'auto',
             margin:0,
-            marginLeft:20,
             fontSize:30,
             fontWeight:600
         },
