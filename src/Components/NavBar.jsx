@@ -20,6 +20,7 @@ export default function NavBar(){
         name:{
             width:'auto',
             margin:0,
+            marginLeft:0,
             fontSize:30,
             fontWeight:600
         },

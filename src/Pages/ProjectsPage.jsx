@@ -21,32 +21,42 @@ export default function ProjectPage(){
 	async function fetchProjects(){
 		const URL = `${API_URL}${GET_PROJECTS_ROUTE}`;
 		const response = await fetch(URL);
-		if(!response.ok){
-			console.log('Failed to fetch projects:', response.statusText);
-			return;
+		try {
+			if(!response.ok){
+				console.error('Failed to fetch projects:', response.statusText);
+				return;
+			}
+			const record = await response.json();
+			if(!record){
+				console.error('Projects not found');
+				return;
+			}
+			record.reverse();
+			setProjects(record);
+			setFilteredProjects(record);
 		}
-		const record = await response.json();
-		if(!record){
-			console.log('Projects not found');
-			return;
+		catch (e) {
+			console.error('Error fetching projects', e);
 		}
-		setProjects(record);
-		setFilteredProjects(record);
 	}
 
 	async function fetchTags(){
 		const URL = `${API_URL}${GET_TAGS_ROUTE}`;
 		const response = await fetch(URL);
-		if(!response.ok){
-			console.log('Failed to fetch tags:', response.statusText);
-			return;
+		try {
+			if(!response.ok){
+				console.error('Failed to fetch tags:', response.statusText);
+				return;
+			}
+			const record = await response.json();
+			if(!record){
+				console.error('Tags not found');
+				return;
+			}
+			setTags(record.map((aTag) => {return {value:aTag, label:aTag}}));
+		} catch (e) {
+			console.error('Error fetching project tags', e)
 		}
-		const record = await response.json();
-		if(!record){
-			console.log('Tags not found');
-			return;
-		}
-		setTags(record.map((aTag) => {return {value:aTag, label:aTag}}));
 	}
 
 	// Effects
@@ -71,7 +81,7 @@ export default function ProjectPage(){
 			filtered = filtered.filter((aProject) => selected.every((tag) => aProject.tags.includes(tag)));
 		}
 		setFilteredProjects(filtered);
-	}, [searchString, selectedTags]);
+	}, [projects, searchString, selectedTags]);
 
 	// Styles
 
@@ -117,11 +127,11 @@ export default function ProjectPage(){
 			width:'100%'
 		},
 		tagInput:{
-			control: (baseStyles, state) => ({
+			control: (baseStyles) => ({
 				...baseStyles,
 				borderRadius:'16px'
 			}),
-			multiValue: (baseStyles, state) => ({
+			multiValue: (baseStyles) => ({
 				...baseStyles,
 				borderRadius:'16px'
 			})
@@ -174,7 +184,7 @@ export default function ProjectPage(){
 			</div>
 
 			{filteredProjects.length === 0 ?
-				<p style={styles.empty}>That doesn't exist... (YET!)</p>
+				<p style={styles.empty}>That doesn&#39;t exist... (YET!)</p>
 				:
 				<div style={styles.grid}>
 					{filteredProjects.map((aItem, aIndex) => (

@@ -76,18 +76,18 @@ export default function HomePage(){
         const response = await fetch(URL);
         try {
             if(!response.ok){
-                console.log('Failed to fetch projects:', response.statusText);
+                console.error('Failed to fetch projects:', response.statusText);
                 return;
             }
             const record = await response.json();
             if(!record){
-                console.log('Projects not found');
+                console.error('Projects not found');
                 return;
             }
             setProjectsList(record);
         }
         catch (e) {
-            console.log('Error fetching projects', e);
+            console.error('Error fetching projects', e);
         }
     }
 
@@ -193,9 +193,9 @@ export default function HomePage(){
         <div style={styles.contentContainer}>
             <div style={styles.contentSection}>
                 <div style={styles.profileTextContainer}>
-                    <p style={styles.profileSubText}>Hey, I'm</p>
+                    <p style={styles.profileSubText}>Hey, I&#39;m</p>
 
-                    <p style={styles.profileNameText}>Nicanor Josemaria "Mari" W. Montoya</p>
+                    <p style={styles.profileNameText}>Nicanor Josemaria &#34;Mari&#34; W. Montoya</p>
 
                     <p style={styles.profileSubText}>Developer | Student</p>
 
@@ -229,7 +229,7 @@ export default function HomePage(){
 
                 {projectsList.length > 0 ?
                     <>
-                        <p style={styles.text}>Here's some of the stuff that I worked on.</p>
+                        <p style={styles.text}>Here&#39;s some of the stuff that I worked on.</p>
 
                         <div style={styles.projectsList}>
                             {projectsList.map((aItem, aIndex) => (
@@ -256,7 +256,7 @@ export default function HomePage(){
             <div style={styles.contentSection}>
                 <p style={styles.headerText}>Experience</p>
 
-                <p style={styles.text}>Here's a quick timeline of my career <b>so far</b>.</p>
+                <p style={styles.text}>Here&#39;s a quick timeline of my career <b>so far</b>.</p>
 
                 <div style={styles.projectsList}>
                     {experiencesList.map((aItem, aIndex) => (
