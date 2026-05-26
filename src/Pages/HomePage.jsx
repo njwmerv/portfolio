@@ -1,17 +1,18 @@
-import {useEffect, useState} from 'react';
+import {useState} from 'react';
 import {Link} from 'react-router';
+import {PROJECTS} from '../Utility/projects.js';
 import PillButton from '../Components/PillButton.jsx';
 import PreviewCell from '../Components/PreviewCell.jsx';
 import {navBarHeight} from '../Helpers/Constants.js';
 import {openInNewTab} from '../Helpers/Helpers.js';
 import backgroundImage from './pixel-galaxy.png';
-import {API_URL, GET_PROJECTS_ROUTE, GET_TOP_THREE_PROJECTS, PROJECT_PAGE_ROUTE} from '../Utility/routes.js';
+import {PROJECT_PAGE_ROUTE} from '../Utility/routes.js';
 
 export default function HomePage(){
 
     // Instance Variables
 
-    const [projectsList, setProjectsList] = useState([]);
+    const [projectsList] = useState(PROJECTS.filter((proj) => proj.topThree));
 
     const experiencesList = [
         {
@@ -66,36 +67,19 @@ export default function HomePage(){
                     <p>Jan 2026 - Apr 2026</p>
                 </>
             )
-        }
+        },
+        {
+            title:'Cresta Intelligence',
+            imageUri:'/cresta-logo-white.gif',
+            description:(
+                <>
+                    <strong>Fullstack Engineering Co-op</strong>
+                    <p>Voice AI Infra Team</p>
+                    <p>May 2026 - Aug 2026</p>
+                </>
+            )
+        },
     ];
-
-    // Helpers
-
-    async function fetchProjects(){
-        const URL = `${API_URL}${GET_PROJECTS_ROUTE}${GET_TOP_THREE_PROJECTS}`;
-        const response = await fetch(URL);
-        try {
-            if(!response.ok){
-                console.error('Failed to fetch projects:', response.statusText);
-                return;
-            }
-            const record = await response.json();
-            if(!record){
-                console.error('Projects not found');
-                return;
-            }
-            setProjectsList(record);
-        }
-        catch (e) {
-            console.error('Error fetching projects', e);
-        }
-    }
-
-    // Effects
-
-    useEffect(() => {
-        fetchProjects();
-    }, []);
 
     // Styles
 

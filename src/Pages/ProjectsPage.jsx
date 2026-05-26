@@ -3,85 +3,35 @@ import Select from 'react-select';
 import PreviewCell from '../Components/PreviewCell.jsx';
 import {navBarHeight} from '../Helpers/Constants.js';
 import backgroundImage from './pixel-galaxy.png';
-import {API_URL, GET_PROJECTS_ROUTE, GET_TAGS_ROUTE} from '../Utility/routes.js';
+import {PROJECTS, TAGS} from '../Utility/projects.js';
 
 export default function ProjectPage(){
 
 	// Instance Variables
 
-	const [projects, setProjects] = useState([]);
 	const [searchString, setSearchString] = useState('');
 	const [filteredProjects, setFilteredProjects] = useState([]);
-	const [tags, setTags] = useState([]);
 	const [tagsInput, setTagsInput] = useState('');
 	const [selectedTags, setSelectedTags] = useState(null);
-
-	// Helpers
-
-	async function fetchProjects(){
-		const URL = `${API_URL}${GET_PROJECTS_ROUTE}`;
-		const response = await fetch(URL);
-		try {
-			if(!response.ok){
-				console.error('Failed to fetch projects:', response.statusText);
-				return;
-			}
-			const record = await response.json();
-			if(!record){
-				console.error('Projects not found');
-				return;
-			}
-			record.reverse();
-			setProjects(record);
-			setFilteredProjects(record);
-		}
-		catch (e) {
-			console.error('Error fetching projects', e);
-		}
-	}
-
-	async function fetchTags(){
-		const URL = `${API_URL}${GET_TAGS_ROUTE}`;
-		const response = await fetch(URL);
-		try {
-			if(!response.ok){
-				console.error('Failed to fetch tags:', response.statusText);
-				return;
-			}
-			const record = await response.json();
-			if(!record){
-				console.error('Tags not found');
-				return;
-			}
-			setTags(record.map((aTag) => {return {value:aTag, label:aTag}}));
-		} catch (e) {
-			console.error('Error fetching project tags', e)
-		}
-	}
 
 	// Effects
 
 	useEffect(() => {
-		fetchProjects();
-		fetchTags();
-	}, []);
-
-	useEffect(() => {
 		if(!searchString && !selectedTags){
-			setFilteredProjects(projects);
+			setFilteredProjects(PROJECTS);
 			return;
 		}
-		let filtered = [...projects];
+		let filtered = [...PROJECTS];
 		if(searchString){
 			const regex = new RegExp(searchString, 'i');
-			filtered = projects.filter((aProject) => aProject.name.match(regex));
+			filtered = PROJECTS.filter((aProject) => aProject.name.match(regex));
 		}
 		if(selectedTags){
 			const selected = selectedTags.map((aSelection) => aSelection.value);
 			filtered = filtered.filter((aProject) => selected.every((tag) => aProject.tags.includes(tag)));
 		}
 		setFilteredProjects(filtered);
-	}, [projects, searchString, selectedTags]);
+	}, [searchString, selectedTags]);
 
 	// Styles
 
@@ -170,7 +120,7 @@ export default function ProjectPage(){
 
 				<div style={styles.tagContainer}>
 					<Select value={selectedTags}
-					        options={tags}
+					        options={TAGS}
 					        onChange={setSelectedTags}
 					        styles={styles.tagInput}
 					        placeholder="Select tags"
