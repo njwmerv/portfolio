@@ -1,0 +1,1 @@
+This is my personal website and also portfolio for everything I'm working or worked on. Feel free to take a look around!
