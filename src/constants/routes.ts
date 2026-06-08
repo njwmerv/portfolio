@@ -1,0 +1,4 @@
+export const HOME_ROUTE: string = "/"
+export const PROJECTS_ROUTE: string = "/projects"
+export const EXPERIENCES_ROUTE: string = "/experiences"
+export const OTHERS_ROUTE: string = "/others"
