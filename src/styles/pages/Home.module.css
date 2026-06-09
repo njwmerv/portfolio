@@ -1,10 +1,92 @@
+:root {
+    --map-width: 4424px;
+    --map-offset: -250px;
+    --MAP: url('/detailed_world_map.jpg');
+    --dim: rgba(0, 0, 0, 0.4);
+}
+
 .main {
     width: 100%;
     font-size: 16px;
-    background-color: beige;
+    
+    /*animation: scrollBackground 20s linear infinite;*/
+    
+    /*background-size: 200%;*/
+    /*background-image: linear-gradient(var(--dim), var(--dim)), var(--MAP);*/
+    /*background-repeat-x: repeat;*/
+    /*background-repeat-y: no-repeat;*/
+    /*background-attachment: fixed;*/
+}
+
+@keyframes scrollBackground {
+    0% {
+        background-position: var(--map-offset) var(--map-offset);
+    }
+    100% {
+        background-position: calc(var(--map-width) + var(--map-offset)) var(--map-offset);
+    }
 }
 
 .frame {
     width: 100%;
     height: 100dvh;
+}
+
+.intro {
+    color: white;
+    
+    gap: 2.5rem;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.introSection {
+    height: 100%;
+    width: 400px;
+}
+
+.headshotContainer {
+    display: flex;
+    flex-direction: row;
+    
+    align-items: center;
+    justify-content: center;
+}
+
+.headshot {
+    width: 320px;
+    height: 320px;
+    bottom: 2.5rem;
+    position: relative;
+    border-radius: 50%;
+}
+
+.introText {
+    bottom: 2.5rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.greeting {
+    margin: 0 0 1rem;
+    font-size: 2rem;
+}
+
+.name {
+    font-size: 3.5rem;
+}
+
+.pronunciation {
+    margin: 0 0 1rem;
+    font-size: 1rem;
+}
+
+.descriptions {
+    margin: 0;
+    font-size: 2rem;
+    white-space: nowrap;
 }

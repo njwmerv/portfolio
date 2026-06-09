@@ -26,7 +26,7 @@ function NavBar() {
                     {LINKS.map(({label, link}: {label: string, link: string}) => {
                         return (
                             <div className={styles.otherLinks}>
-                                <NavLink to={link} className={styles.navLink}>
+                                <NavLink key={link} to={link} className={styles.navLink}>
                                     {label}
                                 </NavLink>
                             </div>
@@ -42,16 +42,18 @@ export default function App() {
     
     return (
         <BrowserRouter>
-            <NavBar />
-            
-            <main>
-                <Routes>
-                    <Route path={HOME_ROUTE} element={<HomePage />} />
-                    <Route path={PROJECTS_ROUTE} element={<ProjectsPage />} />
-                    <Route path={EXPERIENCES_ROUTE} element={<ExperiencesPage />} />
-                    <Route path={OTHERS_ROUTE} element={<OthersPage />} />
-                </Routes>
-            </main>
+            <div className={styles.everything}>
+                <NavBar />
+                
+                <main>
+                    <Routes>
+                        <Route path={HOME_ROUTE} element={<HomePage />} />
+                        <Route path={PROJECTS_ROUTE} element={<ProjectsPage />} />
+                        <Route path={EXPERIENCES_ROUTE} element={<ExperiencesPage />} />
+                        <Route path={OTHERS_ROUTE} element={<OthersPage />} />
+                    </Routes>
+                </main>
+            </div>
         </BrowserRouter>
     )
 }
