@@ -175,13 +175,12 @@ function DayNightScene() {
             
             <Stars
                 ref={starsRef}
-                radius={2.5}
-                depth={50}
-                count={30000}
-                factor={5}
-                saturation={100}
-                fade
-                speed={2}
+                radius={1}
+                depth={25}
+                count={1000}
+                factor={2}
+                saturation={0.5}
+                speed={3}
             />
             
             <ambientLight ref={ambientLightRef} color={"#FFFFFF"} position={[0, 3, -5]} />
