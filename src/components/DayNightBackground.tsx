@@ -84,8 +84,9 @@ function DayNightScene() {
     useFrame((_, delta) => {
         const now = new Date()
         const sec = now.getSeconds()
-        const today = now.getDate()
-        const cycleProgress: number = (sec - today) / secondsPerDay
+	const min = now.getMinutes()
+	const hour = now.getHours()
+        const cycleProgress: number = (sec + min * 60 + hour * 3600) / secondsPerDay
         // const time: number = state.clock.elapsedTime
         // const cycleProgress: number = (time % cycleDuration) / cycleDuration
         const angle: number = cycleProgress * (2 * Math.PI) - (Math.PI / 2)
