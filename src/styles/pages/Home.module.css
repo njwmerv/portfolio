@@ -1,32 +1,6 @@
-:root {
-    --map-width: 4424px;
-    --map-offset: -250px;
-    --MAP: url('/detailed_world_map.jpg');
-    --dim: rgba(0, 0, 0, 0.4);
-}
-
 .main {
     width: 100%;
     font-size: 16px;
-    
-    background-color: transparent;
-    
-    /*animation: scrollBackground 20s linear infinite;*/
-    
-    /*background-size: 200%;*/
-    /*background-image: linear-gradient(var(--dim), var(--dim)), var(--MAP);*/
-    /*background-repeat-x: repeat;*/
-    /*background-repeat-y: no-repeat;*/
-    /*background-attachment: fixed;*/
-}
-
-@keyframes scrollBackground {
-    0% {
-        background-position: var(--map-offset) var(--map-offset);
-    }
-    100% {
-        background-position: calc(var(--map-width) + var(--map-offset)) var(--map-offset);
-    }
 }
 
 .frame {
@@ -47,7 +21,7 @@
     width: 950px;
     height: 400px;
     margin: auto;
-    background-color: red;
+    background-color: rgba(255, 0, 0, 0.8);
     border-radius: 4rem;
     
     position: relative;

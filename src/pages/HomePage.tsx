@@ -1,6 +1,7 @@
 import styles from "../styles/pages/Home.module.css"
-import TypeWriter from "../components/TypeWriter.tsx";
 import TextStream from "../components/TextStream.tsx";
+import TypeWriter from "../components/TypeWriter.tsx";
+import DayNightBackground from "../components/DayNightBackground.tsx";
 
 const GREETINGS: string[] = [
     "Hey! I'm:",
@@ -29,6 +30,8 @@ const SOCIALS: Social[] = [
 export default function HomePage() {
     return (
         <>
+            <DayNightBackground />
+            
             <div className={styles.main}>
                 <div className={`${styles.frame} ${styles.intro}`}>
                     <div className={styles.introContainer}>
