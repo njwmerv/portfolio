@@ -4,11 +4,11 @@ import * as THREE from "three"
 import {Canvas, useFrame} from "@react-three/fiber"
 import {PerspectiveCamera, Stars, useTexture} from "@react-three/drei"
 
-const sunRadius: number = 0.75
-const sunOrbitRadius: number = 10
-const sunZ: number = 5
+const sunRadius: number = 0.6
+const sunOrbitRadius: number = 6.5
+const sunZ: number = 2.5
 
-const sphereRotationSpeed: number = -0.01
+const sphereRotationSpeed: number = 0.05
 const secondsPerDay: number = 86400
 // const cycleDuration: number = 10
 
@@ -70,6 +70,7 @@ function DayNightScene() {
     
     // const earthTexture = useTexture('/detailed_world_map.jpg')
     const earthTexture = useTexture('/world_map_blob.jpg')
+    earthTexture.offset.set(0, -0.13)
     
     const uniforms = useMemo(() => ({
         sunPosition: { value: new THREE.Vector3() },
@@ -77,7 +78,7 @@ function DayNightScene() {
         nightColor: { value: nightColour },
         dayColor: { value: dayColour },
         sunsetIntensity: { value: 0 },
-        nightIntensity: { value: 1.0 },
+        nightIntensity: { value: 0 },
     }), [])
     
     useFrame((_, delta) => {
@@ -90,7 +91,7 @@ function DayNightScene() {
         const angle: number = cycleProgress * (2 * Math.PI) - (Math.PI / 2)
         
         const elevation: number = Math.sin(angle)
-        const sunX: number = Math.cos(angle) * sunOrbitRadius
+        const sunX: number = -Math.cos(angle) * sunOrbitRadius
         const sunY: number = Math.sin(angle) * sunOrbitRadius
         
         if (skyMaterialRef.current) {
@@ -103,12 +104,12 @@ function DayNightScene() {
                 0.05
             )
             
-            const nightMode = elevation > 0 ? 1.0 : 0.0;
+            const nightMode = elevation > 0 ? 1.0 : 0.0
             skyMaterialRef.current.uniforms.nightIntensity.value = THREE.MathUtils.lerp(
                 skyMaterialRef.current.uniforms.nightIntensity.value,
                 nightMode,
                 0.05
-            );
+            )
         }
         
         if (sunRef.current) {
@@ -208,8 +209,8 @@ function DayNightScene() {
             </mesh>
             
             <PerspectiveCamera
-                makeDefault position={[0, 3, -5]}
-                onUpdate={(camera) => camera.lookAt(0, 8, 10)}
+                makeDefault position={[0, 3, -5.5]}
+                onUpdate={(camera) => camera.lookAt(0, 4, 10)}
             />
         </>
     )
