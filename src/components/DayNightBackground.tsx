@@ -9,8 +9,7 @@ const sunOrbitRadius: number = 6.5
 const sunZ: number = 2.5
 
 const sphereRotationSpeed: number = 0.05
-const secondsPerDay: number = 86400
-// const cycleDuration: number = 10
+const secondsPerDay: number = 1800
 
 const vertexShader = `
   varying vec3 vWorldPosition;
@@ -68,9 +67,7 @@ function DayNightScene() {
     const skyMaterialRef = useRef<THREE.ShaderMaterial>(null)
     const ambientLightRef = useRef<THREE.AmbientLight>(null)
     
-    // const earthTexture = useTexture('/detailed_world_map.jpg')
     const earthTexture = useTexture('/world_map_blob.jpg')
-    earthTexture.offset.set(0, -0.13)
     
     const uniforms = useMemo(() => ({
         sunPosition: { value: new THREE.Vector3() },
@@ -87,8 +84,6 @@ function DayNightScene() {
 	const min = now.getMinutes()
 	const hour = now.getHours()
         const cycleProgress: number = (sec + min * 60 + hour * 3600) / secondsPerDay
-        // const time: number = state.clock.elapsedTime
-        // const cycleProgress: number = (time % cycleDuration) / cycleDuration
         const angle: number = cycleProgress * (2 * Math.PI) - (Math.PI / 2)
         
         const elevation: number = Math.sin(angle)
@@ -121,7 +116,10 @@ function DayNightScene() {
             moonRef.current.rotation.x += delta * sphereRotationSpeed
             moonRef.current.position.set(-sunX, -sunY, sunZ)
         }
-        if (sphereRef.current) sphereRef.current.rotation.y += delta * sphereRotationSpeed
+        if (sphereRef.current) {
+            sphereRef.current.rotation.x = 0.3
+            sphereRef.current.rotation.y += delta * sphereRotationSpeed
+        }
         
         if (sunlightRef.current) {
             sunlightRef.current.position.set(sunX, sunY, sunZ)
