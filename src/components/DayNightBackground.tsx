@@ -9,7 +9,7 @@ const sunOrbitRadius: number = 6.5
 const sunZ: number = 2.5
 
 const sphereRotationSpeed: number = 0.05
-const secondsPerDay: number = 1800
+const msPerDay: number = 1800000
 
 const vertexShader = `
   varying vec3 vWorldPosition;
@@ -80,10 +80,11 @@ function DayNightScene() {
     
     useFrame((_, delta) => {
         const now = new Date()
+        const ms = now.getMilliseconds()
         const sec = now.getSeconds()
-	const min = now.getMinutes()
-	const hour = now.getHours()
-        const cycleProgress: number = (sec + min * 60 + hour * 3600) / secondsPerDay
+        const min = now.getMinutes()
+    	const hour = now.getHours()
+        const cycleProgress: number = (ms + sec * 1000 + min * 60000 + hour * 3600000) / msPerDay
         const angle: number = cycleProgress * (2 * Math.PI) - (Math.PI / 2)
         
         const elevation: number = Math.sin(angle)
