@@ -21,7 +21,8 @@
     width: 950px;
     height: 400px;
     margin: auto;
-    background-color: rgba(255, 0, 0, 0.8);
+    background-color: #3D3D3D;
+    opacity: 0.9;
     border-radius: 4rem;
     
     position: relative;
@@ -61,6 +62,7 @@
 }
 
 .greeting {
+    line-height: 1rem;
     margin: 0 0 1rem;
     font-size: 2rem;
 }

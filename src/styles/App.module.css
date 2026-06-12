@@ -3,6 +3,11 @@
     z-index: 999;
     position: sticky;
     background-color: rgba(1, 53, 109, 0.9);
+    border-bottom-style: solid;
+    border-bottom-width: 0.5rem;
+    border-bottom-color: rgba(255, 136, 17, 0.75);
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
 }
 
 .navBar {
