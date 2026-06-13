@@ -99,6 +99,10 @@
     }
 }
 
+:root {
+    --swiper-navigation-color: #FCF6E1;
+}
+
 .projects {
     width: 100%;
     height: 100dvh;
@@ -128,7 +132,34 @@
     .slider {
         width: 900px;
         height: calc(100% - 2rem);
-        margin: 1rem 2rem 1rem 2rem;
+        padding-left: 2rem;
+        padding-right: 2rem;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        position: relative;
+        background-color: #303030;
+        border-radius: 1rem;
+        
+        &::before,
+        &::after {
+            top: 0;
+            width: 150px;
+            bottom: 0;
+            content: "";
+            z-index: 2;
+            position: absolute;
+            pointer-events: none;
+        }
+        
+        &::before {
+            left: 0;
+            background: linear-gradient(to right, #303030 10%, transparent 90%);
+        }
+        
+        &::after {
+            right: 0;
+            background: linear-gradient(to left, #303030 10%, transparent 90%);
+        }
         
         .swiperSlide {
             width: 50%;

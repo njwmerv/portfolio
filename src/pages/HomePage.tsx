@@ -1,16 +1,17 @@
 import styles from "../styles/pages/Home.module.css"
 import "swiper/css"
+import "swiper/css/navigation"
 import "swiper/css/pagination"
-import 'swiper/css/effect-coverflow'
-import Button from "../components/Button.tsx";
+import "swiper/css/effect-coverflow"
+import Button from "../components/Button.tsx"
 import TextStream from "../components/TextStream.tsx"
 import TypeWriter from "../components/TypeWriter.tsx"
-import {useNavigate} from "react-router-dom";
-import DayNightBackground from "../components/DayNightBackground.tsx"
+import {useNavigate} from "react-router-dom"
+import {PROJECTS_ROUTE} from "../utility/routes.ts"
+import DayNightBackground from "../components/DayNightBackground.tsx";
 import {type Project, TOP} from "../utility/projects.ts"
 import {Swiper, SwiperSlide} from "swiper/react"
-import {Pagination, EffectCoverflow, Autoplay} from "swiper/modules"
-import {PROJECTS_ROUTE} from "../utility/routes.ts";
+import {Pagination, EffectCoverflow, Autoplay, Navigation} from "swiper/modules"
 
 const GREETINGS: string[] = [
     "Hey! I'm:",
@@ -100,7 +101,7 @@ export default function HomePage() {
                         <Swiper
                             loop={true}
                             effect={'coverflow'}
-                            modules={[EffectCoverflow, Pagination, Autoplay]}
+                            modules={[EffectCoverflow, Pagination, Autoplay, Navigation]}
                             autoplay={{
                                 delay: 2000,
                                 pauseOnMouseEnter: true,
@@ -108,15 +109,18 @@ export default function HomePage() {
                             }}
                             className={styles.slider}
                             grabCursor={true}
-                            pagination={true}
+                            navigation={true}
+                            pagination={{
+                                clickable: true,
+                            }}
                             slidesPerView={3}
                             centeredSlides={true}
                             coverflowEffect={{
-                                rotate: -30,
-                                stretch: -30,
+                                rotate: -15,
+                                stretch: -45,
                                 depth: 200,
                                 modifier: 1,
-                                slideShadows: true,
+                                slideShadows: false,
                             }}
                         >
                             {TOP.map(({name, img, description}: Project) =>

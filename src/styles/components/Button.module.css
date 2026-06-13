@@ -5,6 +5,7 @@
     text-align: center;
     border-radius: 1rem;
     border: 0;
+    background-color: #F7A41E;
 }
 
 .button:hover {
@@ -12,6 +13,9 @@
 }
 
 .label {
+    color: #FCF6E1;
     margin: 0;
+    font-size: 1rem;
+    font-family: "Ubuntu Mono", monospace;
     vertical-align: center;
 }
