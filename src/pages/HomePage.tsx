@@ -57,7 +57,7 @@ export default function HomePage() {
                                 cursor={"|"}
                             />
                             
-                            <p className={styles.pronunciation}>(pronounced like "Mario" w/o the "o")</p>
+                            <p className={styles.pronunciation}>(pronounced like "Mario" w/o the 'o')</p>
                             
                             <TextStream
                                 texts={DESCRIPTIONS}
@@ -71,6 +71,7 @@ export default function HomePage() {
                                             alt={social.alt}
                                             key={social.src}
                                             src={social.src}
+                                            color={"#FCF6E1"}
                                             className={styles.socialsButton}
                                         />
                                     </a>

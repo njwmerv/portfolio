@@ -9,89 +9,92 @@
 }
 
 .intro {
-    color: white;
+    color: #FCF6E1;
     
     display: flex;
     align-items: center;
     flex-direction: row;
     justify-content: center;
-}
-
-.introContainer {
-    width: 950px;
-    height: 400px;
-    margin: auto;
-    background-color: #3D3D3D;
-    opacity: 0.9;
-    border-radius: 4rem;
     
-    position: relative;
-    bottom: 2.5rem;
+    .introContainer {
+        width: 950px;
+        height: 400px;
+        margin: auto;
+        background-color: #303030;
+        opacity: 0.95;
+        backdrop-filter: blur(1rem);
+        border: 0 solid #FCF6E1;
+        border-bottom-width: 0.4rem;
+        border-radius: 4rem;
+        
+        position: relative;
+        bottom: 2.5rem;
+        
+        gap: 1.5rem;
+        display: flex;
+        align-items: flex-start;
+        flex-direction: row;
+        justify-content: center;
+    }
     
-    gap: 1.5rem;
-    display: flex;
-    align-items: flex-start;
-    flex-direction: row;
-    justify-content: center;
-}
-
-.introSection {
-    height: 100%;
-}
-
-.headshotContainer {
-    display: flex;
-    flex-direction: column;
+    .introSection {
+        height: 100%;
+    }
     
-    align-self: center;
-    align-items: center;
-    justify-content: center;
-}
-
-.headshot {
-    width: 320px;
-    height: 320px;
-    border-radius: 50%;
-}
-
-.introText {
-    width: 450px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.greeting {
-    line-height: 1rem;
-    margin: 0 0 1rem;
-    font-size: 2rem;
-}
-
-.name {
-    font-size: 3.5rem;
-}
-
-.pronunciation {
-    margin: 0 0 1rem;
-    font-size: 1rem;
-}
-
-.descriptions {
-    margin: 0;
-    font-size: 2rem;
-    white-space: nowrap;
-}
-
-.socials {
-    margin-top: 2rem;
+    .headshotContainer {
+        display: flex;
+        flex-direction: column;
+        
+        align-self: center;
+        align-items: center;
+        justify-content: center;
+    }
     
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.socialsButton {
-    width: 72px;
-    height: 72px;
+    .headshot {
+        width: 320px;
+        height: 320px;
+        border-radius: 50%;
+    }
+    
+    .introText {
+        width: 450px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    
+    .greeting {
+        line-height: 1rem;
+        margin: 0 0 1rem;
+        font-size: 2rem;
+    }
+    
+    .name {
+        font-size: 3.5rem;
+    }
+    
+    .pronunciation {
+        margin: 0 0 1rem;
+        font-size: 1rem;
+    }
+    
+    .descriptions {
+        margin: 0;
+        font-size: 2rem;
+        white-space: nowrap;
+    }
+    
+    .socials {
+        margin-top: 2rem;
+        
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+    
+    .socialsButton {
+        width: 72px;
+        height: 72px;
+    }
 }
