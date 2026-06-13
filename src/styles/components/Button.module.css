@@ -1,0 +1,17 @@
+.button {
+    width: fit-content;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    border-radius: 1rem;
+    border: 0;
+}
+
+.button:hover {
+    cursor: pointer;
+}
+
+.label {
+    margin: 0;
+    vertical-align: center;
+}

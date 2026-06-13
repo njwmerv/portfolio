@@ -1,10 +1,10 @@
-import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom";
+import {BrowserRouter, Routes, Route, NavLink} from "react-router-dom";
 import styles from "./styles/App.module.css"
 import HomePage from "./pages/HomePage.tsx";
 import OthersPage from "./pages/OthersPage.tsx";
 import ProjectsPage from "./pages/ProjectsPage.tsx";
 import ExperiencesPage from "./pages/ExperiencesPage.tsx";
-import {EXPERIENCES_ROUTE, HOME_ROUTE, OTHERS_ROUTE, PROJECTS_ROUTE} from "./constants/routes.ts";
+import {EXPERIENCES_ROUTE, HOME_ROUTE, OTHERS_ROUTE, PROJECTS_ROUTE} from "./utility/routes.ts";
 
 const LINKS: {label: string, link: string}[] = [
     {label: "Projects", link: PROJECTS_ROUTE,},
