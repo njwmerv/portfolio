@@ -17,6 +17,21 @@ export const EXPERIENCES: Experience[] = [
         img: "/uwaterloo-logo.png",
     },
     {
+        company: "University of Waterloo",
+        role: "MATH 136 Marker",
+        start: new Date(2024, 8, 1),
+        end: new Date(2024, 11, 31),
+        img: "/uwaterloo-logo.png",
+    },
+    {
+        company: "Tuq Inc.",
+        role: "Junior Developer",
+        team: "Core Team",
+        start: new Date(2024, 4, 1),
+        end: new Date(2024, 7, 31),
+        img: "/propel-holdings-logo.jpg",
+    },
+    {
         company: "Propel Holdings",
         role: "Software Developer Intern",
         team: "Web Team",

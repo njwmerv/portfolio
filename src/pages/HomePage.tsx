@@ -150,9 +150,7 @@ export default function HomePage() {
                 
                 <div className={`${styles.frame} ${styles.experiences}`}>
                     <div className={styles.container}>
-                        <p className={styles.description}>
-                            Here's a quick timeline of my career <b>so far.</b>
-                        </p>
+                        <p className={styles.description}>Here's a quick timeline of my career <b>so far...</b></p>
                         
                         <CareerTimeline />
                     </div>
