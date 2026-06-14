@@ -12,6 +12,7 @@ import DayNightBackground from "../components/DayNightBackground.tsx";
 import {type Project, TOP} from "../utility/projects.ts"
 import {Swiper, SwiperSlide} from "swiper/react"
 import {Pagination, EffectCoverflow, Autoplay, Navigation} from "swiper/modules"
+import CareerTimeline from "../components/CareerTimeline.tsx";
 
 const GREETINGS: string[] = [
     "Hey! I'm:",
@@ -147,8 +148,14 @@ export default function HomePage() {
                     </div>
                 </div>
                 
-                <div className={styles.frame}>
-                    EXPERIENCES
+                <div className={`${styles.frame} ${styles.experiences}`}>
+                    <div className={styles.container}>
+                        <p className={styles.description}>
+                            Here's a quick timeline of my career <b>so far.</b>
+                        </p>
+                        
+                        <CareerTimeline />
+                    </div>
                 </div>
                 
                 <div className={styles.frame}>
