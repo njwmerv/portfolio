@@ -226,6 +226,28 @@ b {
         scrollbar-width: none;
         align-items: center;
         flex-direction: column;
+        
+        .calendarScroll {
+            width: calc(100% - 4rem);
+            overflow-x: auto;
+            overflow-y: hidden;
+            scrollbar-width: thin;
+            scrollbar-color: #666666 transparent;
+        }
+        .scrollArea::-webkit-scrollbar {
+            height: 6px;
+        }
+        .scrollArea::-webkit-scrollbar-track {
+            background: transparent;
+            border-radius: 0.5rem;
+        }
+        .scrollArea::-webkit-scrollbar-thumb {
+            background-color: #666666;
+            border-radius: 0.5rem;
+        }
+        .scrollArea::-webkit-scrollbar-thumb:hover {
+            background-color: #888888;
+        }
     }
     
     .description {

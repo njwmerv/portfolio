@@ -1,6 +1,6 @@
-import type {CSSProperties} from "react";
+import type {CSSProperties} from "react"
 import styles from "../styles/components/CareerTimeline.module.css"
-import {TIMESPAN, MONTHS, EXPERIENCES} from "../utility/experiences.ts";
+import {TIMESPAN, MONTHS, EXPERIENCES, SCHOOL_TERMS, type Experience} from "../utility/experiences.ts"
 
 const monthsWidth: number = 64
 
@@ -17,10 +17,7 @@ const Timestamp = ({time, label, style = {}}: TimestampProps) => {
     const offset: number = durationInMonths(TIMESPAN.start, time) * monthsWidth
     return (
         <div className={styles.timestampContainer} style={{
-            top: 0,
             left: `${offset}px`,
-            margin: 0,
-            position: "absolute",
             width: `${monthsWidth}px`,
             ...style,
         }}>
@@ -29,56 +26,55 @@ const Timestamp = ({time, label, style = {}}: TimestampProps) => {
     )
 }
 
-interface DurationProps {
-    start: Date
-    end: Date
-    label: string
-    description: string
-    style?: CSSProperties
-}
-const Duration = ({start, end, label, description, style = {}}: DurationProps) => {
+const Duration = ({
+    company,
+    role,
+    team,
+    start,
+    end,
+    style,
+}: Experience) => {
     const width: number = (durationInMonths(start, end) + 1) * monthsWidth - 8
     const offset: number = durationInMonths(TIMESPAN.start, start) * monthsWidth
     
     return (
         <div className={styles.durationContainer} style={{
-            top: "66px",
             left: `${offset}px`,
-            margin: 0,
-            position: "absolute",
             width: `${width}px`,
-            backgroundColor: "black",
-            borderLeftWidth: 0,
-            borderRadius: "1rem",
             ...style,
         }}>
-            {label}
-            {description}
+            <p className={styles.durationLabel}>{company}</p>
+            
+            {team && <p className={styles.durationDescription}>{team}</p>}
+            
+            <p className={styles.durationDescription}>{role}</p>
         </div>
     )
 }
 
 export default function CareerTimeline() {
+    const todayOffset: number = durationInMonths(TIMESPAN.start, new Date()) * monthsWidth
+    
     return (
         <div className={styles.calendar} style={{ width: `${MONTHS * monthsWidth}px`}}>
             <div className={styles.yearStamps}>
                 <Timestamp label={"2023"} time={new Date(2023, 8)}
-                           style={{width: `${4 * monthsWidth}px`, borderLeftWidth: 0}}
+                           style={{width: `${4 * monthsWidth}px`}}
                 />
                 <Timestamp label={"2024"} time={new Date(2024, 0)}
-                           style={{width: `${12 * monthsWidth}px`, borderLeftWidth: 0}}
+                           style={{width: `${12 * monthsWidth}px`}}
                 />
                 <Timestamp label={"2025"} time={new Date(2025, 0)}
-                           style={{width: `${12 * monthsWidth}px`, borderLeftWidth: 0}}
+                           style={{width: `${12 * monthsWidth}px`}}
                 />
                 <Timestamp label={"2026"} time={new Date(2026, 0)}
-                           style={{width: `${12 * monthsWidth}px`, borderLeftWidth: 0}}
+                           style={{width: `${12 * monthsWidth}px`}}
                 />
                 <Timestamp label={"2027"} time={new Date(2027, 0)}
-                           style={{width: `${12 * monthsWidth}px`, borderLeftWidth: 0}}
+                           style={{width: `${12 * monthsWidth}px`}}
                 />
                 <Timestamp label={"2028"} time={new Date(2028, 0)}
-                           style={{width: `${6 * monthsWidth}px`, borderLeftWidth: 0}}
+                           style={{width: `${5 * monthsWidth}px`}}
                 />
             </div>
             
@@ -140,24 +136,18 @@ export default function CareerTimeline() {
                 <Timestamp label={"Apr"} time={new Date(2028, 3)}
                            style={{textAlign: "center", height: "calc(360px - 2rem)"}}
                 />
-                <Timestamp label={"June"} time={new Date(2028, 5)}
-                           style={{textAlign: "center", height: "calc(360px - 2rem)"}}
-                />
             </div>
             
-            <div className={styles.monthStamps}>
-                {EXPERIENCES.map((exp, i) => {
-                    if (i === 0) {
-                        return (
-                            <Duration start={exp.start} end={exp.end} label={exp.company} description={exp.role}
-                                      style={{top: 0, backgroundColor: "#FAE100"}}
-                            />
-                        )
-                    }
-                    return (
-                        <Duration start={exp.start} end={exp.end} label={exp.company} description={exp.role} />
-                    )
-                })}
+            <div className={styles.schoolTerms}>
+                {SCHOOL_TERMS.map((term) => <Duration {...term} />)}
+            </div>
+            
+            <div className={styles.workTerms}>
+                {EXPERIENCES.map((exp) => <Duration {...exp} />)}
+            </div>
+            
+            <div className={styles.today} style={{left: `${todayOffset}px`}}>
+                <p>Today</p>
             </div>
         </div>
     )

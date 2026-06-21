@@ -152,7 +152,7 @@ export default function HomePage() {
                     <div className={styles.container}>
                         <p className={styles.description}>Here's a quick timeline of my career <b>so far...</b></p>
                         
-                        <CareerTimeline />
+                        <div className={styles.calendarScroll}><CareerTimeline /></div>
                     </div>
                 </div>
                 
