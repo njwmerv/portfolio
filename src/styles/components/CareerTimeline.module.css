@@ -69,7 +69,9 @@
     margin: 0;
     height: 6rem;
     padding: 1rem;
+    overflow: hidden;
     position: absolute;
+    isolation: isolate;
     box-sizing: border-box;
     white-space: nowrap;
     border-left: 0 dashed rgb(0, 0, 0, 0.1);
@@ -77,10 +79,22 @@
     
     .durationLabel {
         margin: 0;
+        z-index: 999;
     }
     
     .durationDescription {
         margin: 0;
+        z-index: 999;
+    }
+    
+    img {
+        top: 4px;
+        right: 8px;
+        height: 88px;
+        opacity: 0.25;
+        z-index: -1;
+        position: absolute;
+        object-fit: cover;
     }
 }
 

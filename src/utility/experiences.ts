@@ -24,7 +24,7 @@ export const EXPERIENCES: Experience[] = [
         team: "Core Team",
         start: SPRING_START(2024),
         end: SPRING_END(2024),
-        img: "/propel-holdings-logo.jpg",
+        img: "/tuq-logo.png",
         style: {
             backgroundColor: "#8e1721",
             color: "#FCF6E1",
@@ -46,7 +46,7 @@ export const EXPERIENCES: Experience[] = [
         team: "Web Team",
         start: WINTER_START(2025),
         end: WINTER_END(2025),
-        img: "/propel-holdings-logo.jpg",
+        img: "/propel-holdings-logo-2.png",
         style: {
             backgroundColor: "#001730",
             color: "#FCF6E1",
@@ -58,9 +58,9 @@ export const EXPERIENCES: Experience[] = [
         team: "B2C Web-Distribution Team",
         start: FALL_START(2025),
         end: FALL_END(2025),
-        img: "/viviseats-logo.png",
+        img: "/vividseats-logo.png",
         style: {
-            backgroundColor: "#CE3197",
+            backgroundColor: "#8F1564",
             color: "#FCF6E1",
         },
     },
@@ -94,6 +94,7 @@ export const SCHOOL_TERMS: Experience[] = [
         role: "1A",
         start: FALL_START(2023),
         end:   FALL_END(2023),
+        img: "/uwaterloo-logo.png",
         style: {
             backgroundColor: "#FED34C",
         },
@@ -103,6 +104,7 @@ export const SCHOOL_TERMS: Experience[] = [
         role: "1B",
         start: WINTER_START(2024),
         end:   WINTER_END(2024),
+        img: "/uwaterloo-logo.png",
         style: {
             backgroundColor: "#FED34C",
         },
@@ -112,6 +114,7 @@ export const SCHOOL_TERMS: Experience[] = [
         role: "2A",
         start: FALL_START(2024),
         end:   FALL_END(2024),
+        img: "/uwaterloo-logo.png",
         style: {
             backgroundColor: "#FED34C",
         },
@@ -121,6 +124,7 @@ export const SCHOOL_TERMS: Experience[] = [
         role: "2B",
         start: SPRING_START(2025),
         end:   SPRING_END(2025),
+        img: "/uwaterloo-logo.png",
         style: {
             backgroundColor: "#FED34C",
         },
@@ -130,6 +134,7 @@ export const SCHOOL_TERMS: Experience[] = [
         role: "3A",
         start: WINTER_START(2026),
         end:   WINTER_END(2026),
+        img: "/uwaterloo-logo.png",
         style: {
             backgroundColor: "#FED34C",
         },
@@ -139,6 +144,7 @@ export const SCHOOL_TERMS: Experience[] = [
         role: "3B",
         start: FALL_START(2026),
         end:   FALL_END(2026),
+        img: "/uwaterloo-logo.png",
         style: {
             backgroundColor: "#FED34C",
         },
@@ -148,6 +154,7 @@ export const SCHOOL_TERMS: Experience[] = [
         role: "4A",
         start: FALL_START(2027),
         end:   FALL_END(2027),
+        img: "/uwaterloo-logo.png",
         style: {
             backgroundColor: "#FED34C",
         },
@@ -157,6 +164,7 @@ export const SCHOOL_TERMS: Experience[] = [
         role: "4B",
         start: WINTER_START(2028),
         end:   WINTER_END(2028),
+        img: "/uwaterloo-logo.png",
         style: {
             backgroundColor: "#FED34C",
         },

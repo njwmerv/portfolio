@@ -32,6 +32,7 @@ const Duration = ({
     team,
     start,
     end,
+    img,
     style,
 }: Experience) => {
     const width: number = (durationInMonths(start, end) + 1) * monthsWidth - 8
@@ -43,6 +44,8 @@ const Duration = ({
             width: `${width}px`,
             ...style,
         }}>
+            <img src={img} alt={""} />
+            
             <p className={styles.durationLabel}>{company}</p>
             
             {team && <p className={styles.durationDescription}>{team}</p>}
