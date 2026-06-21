@@ -46,7 +46,7 @@ export const EXPERIENCES: Experience[] = [
         team: "Web Team",
         start: WINTER_START(2025),
         end: WINTER_END(2025),
-        img: "/propel-holdings-logo-2.png",
+        img: "/propel-holdings-logo.png",
         style: {
             backgroundColor: "#001730",
             color: "#FCF6E1",

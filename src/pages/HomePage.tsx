@@ -7,7 +7,7 @@ import Button from "../components/Button.tsx"
 import TextStream from "../components/TextStream.tsx"
 import TypeWriter from "../components/TypeWriter.tsx"
 import {useNavigate} from "react-router-dom"
-import {PROJECTS_ROUTE} from "../utility/routes.ts"
+import {EXPERIENCES_ROUTE, PROJECTS_ROUTE} from "../utility/routes.ts"
 import DayNightBackground from "../components/DayNightBackground.tsx";
 import {type Project, TOP} from "../utility/projects.ts"
 import {Swiper, SwiperSlide} from "swiper/react"
@@ -152,7 +152,16 @@ export default function HomePage() {
                     <div className={styles.container}>
                         <p className={styles.description}>Here's a quick timeline of my career <b>so far...</b></p>
                         
-                        <div className={styles.calendarScroll}><CareerTimeline /></div>
+                        <div className={styles.calendarScroll}>
+                            <CareerTimeline />
+                        </div>
+                        
+                        <Button
+                            label={"See More"}
+                            onClick={() => navigate(EXPERIENCES_ROUTE)}
+                            onMouseDown={() => navigate(EXPERIENCES_ROUTE)}
+                            buttonStyle={styles.seeMore}
+                        />
                     </div>
                 </div>
                 
