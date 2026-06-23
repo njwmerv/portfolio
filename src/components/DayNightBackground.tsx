@@ -1,8 +1,8 @@
-import {useRef, useMemo} from "react"
+import {useRef, useMemo, useState} from "react"
 import styles from "../styles/components/DayNightBackground.module.css"
 import * as THREE from "three"
 import {Canvas, useFrame} from "@react-three/fiber"
-import {PerspectiveCamera, Stars, useTexture} from "@react-three/drei"
+import {PerspectiveCamera, Stars, useTexture, PerformanceMonitor} from "@react-three/drei"
 
 const sunRadius: number = 0.6
 const sunOrbitRadius: number = 6.5
@@ -62,7 +62,7 @@ const dayColour = new THREE.Color("#5c9fed")
 const sunsetColour = new THREE.Color("#FB9062")
 const nightColour = new THREE.Color("#02070e")
 
-const commonSphereGeo = new THREE.SphereGeometry(sunRadius, 32, 32)
+const commonSphereGeo = new THREE.SphereGeometry(sunRadius, 16, 16)
 
 function DayNightScene() {
     /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -217,10 +217,17 @@ function DayNightScene() {
 }
 
 export default function DayNightBackground() {
+    const [dpr, setDpr] = useState(1.5)
+    
     return (
         <div className={styles.canvasWrapper}>
-            <Canvas>
-                <DayNightScene />
+            <Canvas dpr={dpr}>
+                <PerformanceMonitor
+                    onDecline={() => setDpr(1)}
+                    onIncline={() => setDpr(1.5)}
+                >
+                    <DayNightScene />
+                </PerformanceMonitor>
             </Canvas>
         </div>
     )
