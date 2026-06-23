@@ -9,7 +9,7 @@ const sunOrbitRadius: number = 6.5
 const sunZ: number = 2.5
 
 const sphereRotationSpeed: number = 0.05
-const secPerDay: number = 1800
+const secPerDay: number = 18
 const baseTime: Date = new Date()
 const sec: number = baseTime.getSeconds()
 const min: number = baseTime.getMinutes() * 60
@@ -26,11 +26,12 @@ const vertexShader = `
 `
 
 const fragmentShader = `
-  uniform vec3 sunDirection;      // Pre-normalized from the CPU
+  uniform vec3 sunDirection;
   uniform vec3 sunsetColor;
   uniform vec3 nightColor;
-  uniform vec3 activeDayColor;    // Pre-multiplied (dayColor * nightIntensity) from the CPU
+  uniform vec3 dayColor;
   uniform float sunsetIntensity;
+  uniform float nightIntensity;
 
   varying vec3 vWorldPosition;
 
@@ -39,7 +40,7 @@ const fragmentShader = `
 
     // 1. Calculate the horizon-based vertical gradient
     float verticalGradient = smoothstep(-0.5, 0.5, rayDir.y);
-    vec3 base = mix(nightColor, activeDayColor, verticalGradient);
+    vec3 base = mix(nightColor, dayColor * nightIntensity, verticalGradient);
 
     // 2. Calculate the sun-aligned halo using fast multiplication
     float proximity = max(0.0, dot(rayDir, sunDirection));
@@ -78,7 +79,7 @@ function DayNightScene() {
     const earthTexture = useTexture('/world_map_blob.jpg')
     
     const uniforms = useMemo(() => ({
-        sunPosition: { value: new THREE.Vector3() },
+        sunDirection: { value: new THREE.Vector3() },
         sunsetColor: { value: sunsetColour },
         nightColor: { value: nightColour },
         dayColor: { value: dayColour },
@@ -95,7 +96,7 @@ function DayNightScene() {
         const sunY: number = Math.sin(angle) * sunOrbitRadius
         
         if (skyMaterialRef.current) {
-            skyMaterialRef.current.uniforms.sunPosition.value.set(sunX, sunY, sunZ)
+            skyMaterialRef.current.uniforms.sunDirection.value.set(sunX, sunY, sunZ)
             
             const haloPeak = 1.0 - Math.min(1.0, 4 * Math.abs(elevation))
             skyMaterialRef.current.uniforms.sunsetIntensity.value = THREE.MathUtils.lerp(
