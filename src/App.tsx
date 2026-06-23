@@ -1,10 +1,11 @@
-import {BrowserRouter, Routes, Route, NavLink} from "react-router-dom";
+import {BrowserRouter, Routes, Route, NavLink} from "react-router-dom"
 import styles from "./styles/App.module.css"
-import HomePage from "./pages/HomePage.tsx";
-import OthersPage from "./pages/OthersPage.tsx";
-import ProjectsPage from "./pages/ProjectsPage.tsx";
-import ExperiencesPage from "./pages/ExperiencesPage.tsx";
-import {EXPERIENCES_ROUTE, HOME_ROUTE, OTHERS_ROUTE, PROJECTS_ROUTE} from "./utility/routes.ts";
+import HomePage from "./pages/HomePage.tsx"
+import OthersPage from "./pages/OthersPage.tsx"
+import ProjectsPage from "./pages/ProjectsPage.tsx"
+import ExperiencesPage from "./pages/ExperiencesPage.tsx"
+import DayNightBackground from "./components/DayNightBackground.tsx"
+import {EXPERIENCES_ROUTE, HOME_ROUTE, OTHERS_ROUTE, PROJECTS_ROUTE} from "./utility/routes.ts"
 
 const LINKS: {label: string, link: string}[] = [
     {label: "Projects", link: PROJECTS_ROUTE,},
@@ -42,16 +43,18 @@ export default function App() {
     
     return (
         <BrowserRouter>
-            <NavBar />
-            
-            <main>
-                <Routes>
-                    <Route path={HOME_ROUTE} element={<HomePage />} />
-                    <Route path={PROJECTS_ROUTE} element={<ProjectsPage />} />
-                    <Route path={EXPERIENCES_ROUTE} element={<ExperiencesPage />} />
-                    <Route path={OTHERS_ROUTE} element={<OthersPage />} />
-                </Routes>
-            </main>
+                <NavBar />
+                
+                <DayNightBackground />
+                
+                <main>
+                    <Routes>
+                        <Route path={HOME_ROUTE} element={<HomePage />} />
+                        <Route path={PROJECTS_ROUTE} element={<ProjectsPage />} />
+                        <Route path={EXPERIENCES_ROUTE} element={<ExperiencesPage />} />
+                        <Route path={OTHERS_ROUTE} element={<OthersPage />} />
+                    </Routes>
+                </main>
         </BrowserRouter>
     )
 }

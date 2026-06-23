@@ -7,12 +7,11 @@ import Button from "../components/Button.tsx"
 import TextStream from "../components/TextStream.tsx"
 import TypeWriter from "../components/TypeWriter.tsx"
 import {useNavigate} from "react-router-dom"
-import {EXPERIENCES_ROUTE, PROJECTS_ROUTE} from "../utility/routes.ts"
-import DayNightBackground from "../components/DayNightBackground.tsx";
+import CareerTimeline from "../components/CareerTimeline.tsx"
 import {type Project, TOP} from "../utility/projects.ts"
 import {Swiper, SwiperSlide} from "swiper/react"
+import {EXPERIENCES_ROUTE, PROJECTS_ROUTE} from "../utility/routes.ts"
 import {Pagination, EffectCoverflow, Autoplay, Navigation} from "swiper/modules"
-import CareerTimeline from "../components/CareerTimeline.tsx";
 
 const GREETINGS: string[] = [
     "Hey! I'm:",
@@ -43,132 +42,170 @@ export default function HomePage() {
     const navigate = useNavigate()
     
     return (
-        <>
-            <DayNightBackground />
-            
-            <div className={styles.main}>
-                <div className={`${styles.frame} ${styles.intro}`}>
-                    <div className={styles.introContainer}>
-                        <div className={`${styles.introSection} ${styles.headshotContainer}`}>
-                            <img
-                                src={"/2048me.jpg"}
-                                alt={"Image of Mari Montoya"}
-                                className={styles.headshot}
-                            />
-                        </div>
-                        
-                        <div className={`${styles.introSection} ${styles.introText}`}>
-                            <TextStream
-                                texts={GREETINGS}
-                                duration={900}
-                                textClassName={styles.greeting}
-                            />
-                            
-                            <TypeWriter
-                                text={"Mari Montoya"}
-                                delay={100}
-                                textClassName={styles.name}
-                                cursor={"|"}
-                            />
-                            
-                            <p className={styles.pronunciation}>(pronounced like "Mario" w/o the 'o')</p>
-                            
-                            <TextStream
-                                texts={DESCRIPTIONS}
-                                textClassName={styles.descriptions}
-                            />
-                            
-                            <div className={styles.socials}>
-                                {SOCIALS.map((social) =>
-                                    <a href={social.href} target={"_blank"}>
-                                        <img
-                                            alt={social.alt}
-                                            key={social.src}
-                                            src={social.src}
-                                            color={"#FCF6E1"}
-                                            className={styles.socialsButton}
-                                        />
-                                    </a>
-                                )}
-                            </div>
-                        </div>
+        <div className={styles.main}>
+            <div className={`${styles.frame} ${styles.intro}`}>
+                <div className={styles.introContainer}>
+                    <div className={`${styles.introSection} ${styles.headshotContainer}`}>
+                        <img
+                            src={"/2048me.jpg"}
+                            alt={"Image of Mari Montoya"}
+                            className={styles.headshot}
+                        />
                     </div>
-                </div>
-                
-                <div className={`${styles.frame} ${styles.projects}`}>
-                    <div className={styles.projectsContainer}>
-                        <p className={styles.projectsDescription}>Here's some of what I've worked on and built!</p>
+                    
+                    <div className={`${styles.introSection} ${styles.introText}`}>
+                        <TextStream
+                            texts={GREETINGS}
+                            duration={900}
+                            textClassName={styles.greeting}
+                        />
                         
-                        <Swiper
-                            loop={true}
-                            effect={'coverflow'}
-                            modules={[EffectCoverflow, Pagination, Autoplay, Navigation]}
-                            autoplay={{
-                                delay: 2000,
-                                pauseOnMouseEnter: true,
-                                disableOnInteraction: false,
-                            }}
-                            className={styles.slider}
-                            grabCursor={true}
-                            navigation={true}
-                            pagination={{
-                                clickable: true,
-                            }}
-                            slidesPerView={3}
-                            centeredSlides={true}
-                            coverflowEffect={{
-                                rotate: -15,
-                                stretch: -45,
-                                depth: 200,
-                                modifier: 1,
-                                slideShadows: false,
-                            }}
-                        >
-                            {TOP.map(({name, img, description}: Project) =>
-                                <SwiperSlide className={styles.swiperSlide}>
-                                    <div className={styles.topProjectContainer}>
-                                        <h2>{name}</h2>
-                                        
-                                        <img alt={`${name} project image`}
-                                             src={img}
-                                        />
-                                        
-                                        <p>{description}</p>
-                                    </div>
-                                </SwiperSlide>
+                        <TypeWriter
+                            text={"Mari Montoya"}
+                            delay={100}
+                            textClassName={styles.name}
+                            cursor={"|"}
+                        />
+                        
+                        <p className={styles.pronunciation}>(pronounced like "Mario" w/o the 'o')</p>
+                        
+                        <TextStream
+                            texts={DESCRIPTIONS}
+                            textClassName={styles.descriptions}
+                        />
+                        
+                        <div className={styles.socials}>
+                            {SOCIALS.map((social) =>
+                                <a href={social.href} target={"_blank"}>
+                                    <img
+                                        alt={social.alt}
+                                        key={social.src}
+                                        src={social.src}
+                                        color={"#FCF6E1"}
+                                        className={styles.socialsButton}
+                                    />
+                                </a>
                             )}
-                        </Swiper>
-                        
-                        <Button
-                            label={"See More"}
-                            onClick={() => navigate(PROJECTS_ROUTE)}
-                            onMouseDown={() => navigate(PROJECTS_ROUTE)}
-                            buttonStyle={styles.seeMore}
-                        />
-                    </div>
-                </div>
-                
-                <div className={`${styles.frame} ${styles.experiences}`}>
-                    <div className={styles.container}>
-                        <p className={styles.description}>Here's a quick timeline of my career <b>so far...</b></p>
-                        
-                        <div className={styles.calendarScroll}>
-                            <CareerTimeline />
                         </div>
-                        
-                        <Button
-                            label={"See More"}
-                            onClick={() => navigate(EXPERIENCES_ROUTE)}
-                            onMouseDown={() => navigate(EXPERIENCES_ROUTE)}
-                            buttonStyle={styles.seeMore}
-                        />
                     </div>
-                </div>
-                
-                <div className={styles.frame}>
-                    OTHER STUFF
                 </div>
             </div>
-        </>
+            
+            <div className={`${styles.frame} ${styles.projects}`}>
+                <div className={styles.projectsContainer}>
+                    <p className={styles.projectsDescription}>Here's some of what I've worked on and built!</p>
+                    
+                    <Swiper
+                        loop={true}
+                        effect={'coverflow'}
+                        modules={[EffectCoverflow, Pagination, Autoplay, Navigation]}
+                        autoplay={{
+                            delay: 2000,
+                            pauseOnMouseEnter: true,
+                            disableOnInteraction: false,
+                        }}
+                        className={styles.slider}
+                        grabCursor={true}
+                        navigation={true}
+                        pagination={{
+                            clickable: true,
+                        }}
+                        slidesPerView={3}
+                        centeredSlides={true}
+                        coverflowEffect={{
+                            rotate: -15,
+                            stretch: -45,
+                            depth: 200,
+                            modifier: 1,
+                            slideShadows: false,
+                        }}
+                    >
+                        {TOP.map(({name, img, description}: Project) =>
+                            <SwiperSlide className={styles.swiperSlide}>
+                                <div className={styles.topProjectContainer}>
+                                    <h2>{name}</h2>
+                                    
+                                    <img alt={`${name} project image`}
+                                         src={img}
+                                    />
+                                    
+                                    <p>{description}</p>
+                                </div>
+                            </SwiperSlide>
+                        )}
+                    </Swiper>
+                    
+                    <Button
+                        label={"See More"}
+                        onClick={() => navigate(PROJECTS_ROUTE)}
+                        onMouseDown={() => navigate(PROJECTS_ROUTE)}
+                        buttonStyle={styles.seeMore}
+                    />
+                </div>
+            </div>
+            
+            <div className={`${styles.frame} ${styles.experiences}`}>
+                <div className={styles.container}>
+                    <p className={styles.description}>Here's a quick timeline of my career <b>so far...</b></p>
+                    
+                    <div className={styles.calendarScroll}>
+                        <CareerTimeline />
+                    </div>
+                    
+                    <Button
+                        label={"See More"}
+                        onClick={() => navigate(EXPERIENCES_ROUTE)}
+                        onMouseDown={() => navigate(EXPERIENCES_ROUTE)}
+                        buttonStyle={styles.seeMore}
+                    />
+                </div>
+            </div>
+            
+            <div className={`${styles.frame} ${styles.others}`}>
+                <div className={styles.container}>
+                    <p className={styles.description}>Here's the other stuff I get up to besides school & work!</p>
+                    
+                    <div className={styles.grid}>
+                        <div className={styles.imgWrapper}>
+                            <img alt={"Me baking"} src={"/baking.jpeg"} />
+                            <div className={styles.overlay}><p>Me baking</p></div>
+                        </div>
+                        <div className={styles.imgWrapper}>
+                            <img alt={"At the Botanical Gardens in Toronto"} src={"/garden.jpg"} />
+                            <div className={styles.overlay}><p>At the Botanical Gardens in Toronto</p></div>
+                        </div>
+                        <div className={styles.imgWrapper}>
+                            <img alt={"On a hike along the Dragon's Back in Hong Kong"} src={"/hike.jpg"} />
+                            <div className={styles.overlay}><p>On a hike along the Dragon's Back in Hong Kong</p></div>
+                        </div>
+                        <div className={styles.imgWrapper}>
+                            <img alt={"Playing a DnD-inspired Lord of the Ring's game with friends"} src={"/lotr.jpg"} />
+                            <div className={styles.overlay}><p>Playing a DnD-inspired Lord of the Ring's game with friends</p></div>
+                        </div>
+                        <div className={styles.imgWrapper}>
+                            <img alt={"Nutmeg (cat) & Wendy (dog) playing"} src={"/pets.jpg"} />
+                            <div className={styles.overlay}><p>Nutmeg (cat) & Wendy (dog) playing</p></div>
+                        </div>
+                        <div className={styles.imgWrapper}>
+                            <img alt={"I'm the king of the world!"} src={"/pirate.jpg"} />
+                            <div className={styles.overlay}><p>I'm the king of the world!</p></div>
+                        </div>
+                    </div>
+                    
+                    <Button
+                        label={"See More"}
+                        onClick={() => navigate(EXPERIENCES_ROUTE)}
+                        onMouseDown={() => navigate(EXPERIENCES_ROUTE)}
+                        buttonStyle={styles.seeMore}
+                    />
+                </div>
+            </div>
+            
+            <div className={styles.footer}>
+                <p>© Nicanor Josemaria W. Montoya, NJWM</p>
+                
+                <p>Trademarks and logos belong to their respective owners.</p>
+            </div>
+        </div>
     )
 }
