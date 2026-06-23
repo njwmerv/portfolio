@@ -9,7 +9,12 @@ const sunOrbitRadius: number = 6.5
 const sunZ: number = 2.5
 
 const sphereRotationSpeed: number = 0.05
-const msPerDay: number = 1800000
+const secPerDay: number = 1800
+const baseTime: Date = new Date()
+const sec: number = baseTime.getSeconds()
+const min: number = baseTime.getMinutes() * 60
+const hour: number = baseTime.getHours() * 3600
+const baseProgress: number = sec + min + hour
 
 const vertexShader = `
   varying vec3 vWorldPosition;
@@ -21,28 +26,29 @@ const vertexShader = `
 `
 
 const fragmentShader = `
-  uniform vec3 sunPosition;
+  uniform vec3 sunDirection;      // Pre-normalized from the CPU
   uniform vec3 sunsetColor;
   uniform vec3 nightColor;
-  uniform vec3 dayColor;
+  uniform vec3 activeDayColor;    // Pre-multiplied (dayColor * nightIntensity) from the CPU
   uniform float sunsetIntensity;
-  uniform float nightIntensity;
 
   varying vec3 vWorldPosition;
 
   void main() {
     vec3 rayDir = normalize(vWorldPosition - cameraPosition);
-    vec3 sunDir = normalize(sunPosition);
 
-    // 1. Calculate the horizon-based vertical gradient (mixes night/day based on height)
+    // 1. Calculate the horizon-based vertical gradient
     float verticalGradient = smoothstep(-0.5, 0.5, rayDir.y);
-    vec3 base = mix(nightColor, dayColor * nightIntensity, verticalGradient);
+    vec3 base = mix(nightColor, activeDayColor, verticalGradient);
 
-    // 2. Calculate the sun-aligned halo
-    float proximity = max(0.0, dot(rayDir, sunDir));
-    float glow = pow(proximity, 16.0); // Sharpened exponent
+    // 2. Calculate the sun-aligned halo using fast multiplication
+    float proximity = max(0.0, dot(rayDir, sunDirection));
+    float p2 = proximity * proximity;
+    float p4 = p2 * p2;
+    float p8 = p4 * p4;
+    float glow = p8 * p8;
 
-    // 3. Final blend: Base gradient + the sun's halo
+    // 3. Final blend
     vec3 finalColor = mix(base, sunsetColor, glow * sunsetIntensity);
 
     gl_FragColor = vec4(finalColor, 1.0);
@@ -55,6 +61,8 @@ const dayAmbient = new THREE.Color("#FFFFFF")
 const dayColour = new THREE.Color("#5c9fed")
 const sunsetColour = new THREE.Color("#FB9062")
 const nightColour = new THREE.Color("#02070e")
+
+const commonSphereGeo = new THREE.SphereGeometry(sunRadius, 32, 32)
 
 function DayNightScene() {
     /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -78,13 +86,8 @@ function DayNightScene() {
         nightIntensity: { value: 0 },
     }), [])
     
-    useFrame((_, delta) => {
-        const now = new Date()
-        const ms = now.getMilliseconds()
-        const sec = now.getSeconds()
-        const min = now.getMinutes()
-    	const hour = now.getHours()
-        const cycleProgress: number = (ms + sec * 1000 + min * 60000 + hour * 3600000) / msPerDay
+    useFrame((state, delta) => {
+        const cycleProgress: number = ((state.clock.elapsedTime + baseProgress) % secPerDay) / secPerDay
         const angle: number = cycleProgress * (2 * Math.PI) - (Math.PI / 2)
         
         const elevation: number = Math.sin(angle)
@@ -186,14 +189,12 @@ function DayNightScene() {
             <ambientLight ref={ambientLightRef} color={"#FFFFFF"} position={[0, 3, -5]} />
             
             <directionalLight ref={sunlightRef} />
-            <mesh ref={sunRef}>
-                <sphereGeometry args={[sunRadius, 32, 32]} />
+            <mesh ref={sunRef} geometry={commonSphereGeo}>
                 <meshBasicMaterial color={"#fde088"} wireframe={true} />
             </mesh>
             
             <directionalLight ref={moonlightRef} intensity={0} />
-            <mesh ref={moonRef}>
-                <sphereGeometry args={[sunRadius, 32, 32]} />
+            <mesh ref={moonRef} geometry={commonSphereGeo}>
                 <meshBasicMaterial color={"#b6b1b1"} wireframe={true} />
             </mesh>
             
@@ -218,7 +219,7 @@ function DayNightScene() {
 export default function DayNightBackground() {
     return (
         <div className={styles.canvasWrapper}>
-            <Canvas shadows>
+            <Canvas>
                 <DayNightScene />
             </Canvas>
         </div>
