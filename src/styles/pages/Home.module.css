@@ -350,7 +350,7 @@ b {
     padding: 1.5rem;
     position: relative;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-between;
     background-color: #01356D;
     backdrop-filter: blur(1rem);
     
