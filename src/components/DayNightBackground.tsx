@@ -96,7 +96,7 @@ function DayNightScene() {
         const sunY: number = Math.sin(angle) * sunOrbitRadius
         
         if (skyMaterialRef.current) {
-            skyMaterialRef.current.uniforms.sunDirection.value.set(sunX, sunY, sunZ)
+            skyMaterialRef.current.uniforms.sunDirection.value.set(sunX, sunY, sunZ).normalize()
             
             const haloPeak = 1.0 - Math.min(1.0, 4 * Math.abs(elevation))
             skyMaterialRef.current.uniforms.sunsetIntensity.value = THREE.MathUtils.lerp(
@@ -133,7 +133,6 @@ function DayNightScene() {
         
         if (moonlightRef.current) {
             moonlightRef.current.position.set(-sunX, -sunY, sunZ)
-            
             moonlightRef.current.intensity = 0.5
         }
         
