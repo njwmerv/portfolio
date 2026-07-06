@@ -1,0 +1,33 @@
+.container {
+    display: inline-block;
+    position: relative;
+}
+
+.ghost {
+    visibility: hidden;
+}
+
+.text {
+    top: 0;
+    left: 0;
+    position: absolute;
+}
+
+.cursor {
+    font: inherit;
+    margin-left: 0.1ch;
+    display: inline-block;
+}
+
+.blink {
+    animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+    from, to {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+}

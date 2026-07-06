@@ -3,6 +3,8 @@ html, body {
     
     scrollbar-width: none;
     -ms-overflow-style: none;
+    
+    font-family: "Ubuntu Mono", monospace;
 }
 
 html::-webkit-scrollbar, body::-webkit-scrollbar {
