@@ -9,7 +9,7 @@ const sunOrbitRadius: number = 6.5
 const sunZ: number = 2.5
 
 const sphereRotationSpeed: number = 0.05
-const secPerDay: number = 18
+const secPerDay: number = 1800
 const baseTime: Date = new Date()
 const sec: number = baseTime.getSeconds()
 const min: number = baseTime.getMinutes() * 60

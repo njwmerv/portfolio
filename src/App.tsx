@@ -1,16 +1,14 @@
 import {BrowserRouter, Routes, Route, NavLink} from "react-router-dom"
 import styles from "./styles/App.module.css"
 import HomePage from "./pages/HomePage.tsx"
-import OthersPage from "./pages/OthersPage.tsx"
 import ProjectsPage from "./pages/ProjectsPage.tsx"
-import ExperiencesPage from "./pages/ExperiencesPage.tsx"
 import DayNightBackground from "./components/DayNightBackground.tsx"
-import {EXPERIENCES_ROUTE, HOME_ROUTE, OTHERS_ROUTE, PROJECTS_ROUTE} from "./utility/routes.ts"
+import {HOME_ROUTE, PROJECTS_ROUTE} from "./utility/routes.ts"
 
 const LINKS: {label: string, link: string}[] = [
     {label: "Projects", link: PROJECTS_ROUTE,},
-    {label: "Experiences", link: EXPERIENCES_ROUTE,},
-    {label: "Other Stuff", link: OTHERS_ROUTE},
+    // {label: "Experiences", link: EXPERIENCES_ROUTE,},
+    // {label: "Other Stuff", link: OTHERS_ROUTE},
 ]
 
 function NavBar() {
@@ -22,6 +20,8 @@ function NavBar() {
                         NJWM
                     </NavLink>
                 </div>
+                
+                <div className={styles.bar}></div>
                 
                 <div className={styles.notName}>
                     {LINKS.map(({label, link}: {label: string, link: string}) => {
@@ -51,8 +51,8 @@ export default function App() {
                     <Routes>
                         <Route path={HOME_ROUTE} element={<HomePage />} />
                         <Route path={PROJECTS_ROUTE} element={<ProjectsPage />} />
-                        <Route path={EXPERIENCES_ROUTE} element={<ExperiencesPage />} />
-                        <Route path={OTHERS_ROUTE} element={<OthersPage />} />
+                        {/*<Route path={EXPERIENCES_ROUTE} element={<ExperiencesPage />} />*/}
+                        {/*<Route path={OTHERS_ROUTE} element={<OthersPage />} />*/}
                     </Routes>
                 </main>
         </BrowserRouter>

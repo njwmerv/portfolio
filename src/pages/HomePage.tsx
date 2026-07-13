@@ -10,7 +10,7 @@ import {useNavigate} from "react-router-dom"
 import CareerTimeline from "../components/CareerTimeline.tsx"
 import {type Project, TOP} from "../utility/projects.ts"
 import {Swiper, SwiperSlide} from "swiper/react"
-import {EXPERIENCES_ROUTE, PROJECTS_ROUTE} from "../utility/routes.ts"
+import {PROJECTS_ROUTE} from "../utility/routes.ts"
 import {Pagination, EffectCoverflow, Autoplay, Navigation} from "swiper/modules"
 
 const GREETINGS: string[] = [
@@ -152,12 +152,12 @@ export default function HomePage() {
                         <CareerTimeline />
                     </div>
                     
-                    <Button
-                        label={"See More"}
-                        onClick={() => navigate(EXPERIENCES_ROUTE)}
-                        onMouseDown={() => navigate(EXPERIENCES_ROUTE)}
-                        buttonStyle={styles.seeMore}
-                    />
+                    {/*<Button*/}
+                    {/*    label={"See More"}*/}
+                    {/*    onClick={() => navigate(EXPERIENCES_ROUTE)}*/}
+                    {/*    onMouseDown={() => navigate(EXPERIENCES_ROUTE)}*/}
+                    {/*    buttonStyle={styles.seeMore}*/}
+                    {/*/>*/}
                 </div>
             </div>
             
@@ -167,8 +167,8 @@ export default function HomePage() {
                     
                     <div className={styles.grid}>
                         <div className={styles.imgWrapper}>
-                            <img alt={"Me baking"} src={"/baking.jpeg"} />
-                            <div className={styles.overlay}><p>Me baking</p></div>
+                            <img alt={"Me when I bake"} src={"/baking.jpeg"} />
+                            <div className={styles.overlay}><p>Me when I bake</p></div>
                         </div>
                         <div className={styles.imgWrapper}>
                             <img alt={"At the Botanical Gardens in Toronto"} src={"/garden.jpg"} />
@@ -192,12 +192,12 @@ export default function HomePage() {
                         </div>
                     </div>
                     
-                    <Button
-                        label={"See More"}
-                        onClick={() => navigate(EXPERIENCES_ROUTE)}
-                        onMouseDown={() => navigate(EXPERIENCES_ROUTE)}
-                        buttonStyle={styles.seeMore}
-                    />
+                    {/*<Button*/}
+                    {/*    label={"See More"}*/}
+                    {/*    onClick={() => navigate(OTHERS_ROUTE)}*/}
+                    {/*    onMouseDown={() => navigate(OTHERS_ROUTE)}*/}
+                    {/*    buttonStyle={styles.seeMore}*/}
+                    {/*/>*/}
                 </div>
             </div>
             

@@ -2,6 +2,28 @@ import type {CSSProperties} from "react"
 import styles from "../styles/components/CareerTimeline.module.css"
 import {TIMESPAN, MONTHS, EXPERIENCES, SCHOOL_TERMS, type Experience} from "../utility/experiences.ts"
 
+const getNumDaysInMonth = (date: Date) => {
+    switch (date.getMonth()) {
+        case 0:
+        case 2:
+        case 4:
+        case 6:
+        case 7:
+        case 9:
+        case 11:
+            return 31
+        case 3:
+        case 5:
+        case 8:
+        case 10:
+            return 30
+        case 1:
+            return (date.getFullYear() % 4 === 0 && date.getFullYear() % 100 !== 0) ? 29 : 28
+        default:
+            return 30
+    }
+}
+
 const monthsWidth: number = 64
 
 const durationInMonths = (start: Date, end: Date) => {
@@ -56,7 +78,9 @@ const Duration = ({
 }
 
 export default function CareerTimeline() {
-    const todayOffset: number = durationInMonths(TIMESPAN.start, new Date()) * monthsWidth
+    const NOW: Date = new Date()
+    const partialOffset: number = Math.floor(NOW.getDate() * monthsWidth / getNumDaysInMonth(NOW))
+    const todayOffset: number = durationInMonths(TIMESPAN.start, NOW) * monthsWidth + partialOffset
     
     return (
         <div className={styles.calendar} style={{ width: `${MONTHS * monthsWidth}px`}}>

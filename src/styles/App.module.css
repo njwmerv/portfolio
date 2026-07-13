@@ -31,7 +31,6 @@ main {
     display: flex;
     align-items: center;
     flex-direction: row;
-    justify-content: space-between;
 }
 
 .navLink {
@@ -46,16 +45,21 @@ main {
     margin-left: 2rem;
 }
 
+.bar {
+    margin-left: 2rem;
+    margin-right: 2rem;
+    width: 0.2rem;
+    height: 2.5rem;
+    background-color: #FCF6E1;
+}
+
 .notName {
     display: flex;
     align-items: center;
     flex-direction: row;
-    
-    margin-right: 2rem;
 }
 
 .otherLinks {
     font-size: 1.25rem;
     font-weight: 800;
-    margin-left: 2rem;
 }
