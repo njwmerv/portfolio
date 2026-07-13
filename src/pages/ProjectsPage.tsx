@@ -46,8 +46,6 @@ export default function ProjectsPage() {
         return filtered
     }, [searchString, selectedTags])
     
-    console.log("MARI", filteredProjects)
-    
     return (
         <div className={styles.contentContainer}>
             <div className={styles.filtersContainer}>

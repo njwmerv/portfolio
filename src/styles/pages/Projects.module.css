@@ -83,10 +83,10 @@
 }
 
 .title {
+    margin: 0;
     font-size: 2rem;
     text-align: center;
     font-weight: 600;
-    margin-bottom: 0.625rem;
 }
 
 .image {
@@ -99,7 +99,6 @@
 .description {
     width: 100%;
     font-size: 1rem;
-    margin-top: 0.625rem;
     margin-bottom: 0.625rem;
 }
 
