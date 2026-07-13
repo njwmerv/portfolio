@@ -1,21 +1,19 @@
-import styles from "../styles/components/ProjectCell.module.css";
-import type {Project} from "../utility/projects.ts";
-import {useMediaQuery} from "../hooks/useMediaQuery.tsx";
+import styles from "../styles/components/ProjectCell.module.css"
+import type {Project} from "../utility/projects.ts"
+import {useMediaQuery} from "../hooks/useMediaQuery.tsx"
 
 interface ProjectCellProps {
-    key: string
     project: Project
 }
 
 export default function ProjectCell({
-    key,
     project,
 }: ProjectCellProps) {
     const isMobile: boolean = useMediaQuery("max-width: 768px")
     
     return (
         isMobile ? (
-            <div className={styles.container} key={key}>
+            <div className={styles.container}>
                 <div className={styles.content}>
                     <img alt={project.name}
                          src={project.img}
@@ -39,7 +37,7 @@ export default function ProjectCell({
             </div>
         )
         : (
-            <div className={styles.container} key={key}>
+            <div className={styles.container}>
                 <div className={styles.content}>
                     <p className={styles.title}>{project.name}</p>
                     

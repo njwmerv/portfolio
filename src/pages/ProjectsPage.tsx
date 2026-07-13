@@ -76,9 +76,11 @@ export default function ProjectsPage() {
                 <p className={styles.empty}>That doesn&#39;t exist... (YET!)</p>
                 :
                 <div className={styles.grid}>
-                    {filteredProjects.map((aProject: Project, i: number) => (
-                        <ProjectCell key={`project-${i}`} project={aProject} />
-                    ))}
+                    {filteredProjects.map((aProject: Project, i: number) => {
+                        return (
+                            <ProjectCell key={`project-${i}`} project={aProject} />
+                        )
+                    })}
                 </div>
             }
         </div>
