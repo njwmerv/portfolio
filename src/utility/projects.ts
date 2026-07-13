@@ -218,7 +218,6 @@ const tags: Map<string, number> = PROJECTS.reduce((fullTags: Map<string, number>
     return fullTags
 }, new Map())
 
-export const TAGS: Tag[] = Array.from(tags, ([tag, count]) => {
-    return { name: tag, count: count };
-})
-
+export const TAGS: Tag[] = Array.from(tags, ([tag, count]: [string, number]) => {
+    return { name: tag, count: count }
+}).sort((a: Tag, b: Tag) => b.count - a.count)
