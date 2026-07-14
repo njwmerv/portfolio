@@ -44,6 +44,13 @@ b {
         align-items: flex-start;
         flex-direction: row;
         justify-content: center;
+        
+        @media (max-width: 768px) {
+            width: 90dvw;
+            max-width: 360px;
+            height: 95dvh;
+            flex-direction: column;
+        }
     }
     
     .introSection {
@@ -57,12 +64,21 @@ b {
         align-self: center;
         align-items: center;
         justify-content: center;
+        
+        @media (max-width: 768px) {
+            height: 250px;
+        }
     }
     
     .headshot {
         width: 320px;
-        height: 320px;
         border-radius: 50%;
+        
+        @media (max-width: 768px) {
+            /*width: 250px;*/
+            width: 80%;
+            max-width: 320px;
+        }
     }
     
     .introText {
@@ -70,27 +86,51 @@ b {
         display: flex;
         flex-direction: column;
         justify-content: center;
+        
+        @media (max-width: 768px) {
+            width: 100%;
+            height: auto;
+            align-items: center;
+        }
     }
     
     .greeting {
         line-height: 1rem;
         margin: 0 0 1rem;
         font-size: 2rem;
+        
+        @media (max-width: 768px) {
+            font-size: 1.5rem;
+        }
     }
     
     .name {
         font-size: 3.5rem;
+        
+        @media (max-width: 768px) {
+            width: 100%;
+            font-size: 2.5rem;
+            text-align: center;
+        }
     }
     
     .pronunciation {
         margin: 0 0 1rem;
         font-size: 1rem;
+        
+        @media (max-width: 768px) {
+            font-size: 0.875rem;
+        }
     }
     
     .descriptions {
         margin: 0;
         font-size: 2rem;
         white-space: nowrap;
+        
+        @media (max-width: 768px) {
+            font-size: 1.25rem;
+        }
     }
     
     .socials {
@@ -100,11 +140,20 @@ b {
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
+        
+        @media (max-width: 768px) {
+            gap: 2.5rem;
+            width: 300px;
+            justify-content: center;
+        }
     }
     
     .socialsButton {
         width: 72px;
-        height: 72px;
+        
+        @media (max-width: 768px) {
+            width: 60px;
+        }
     }
 }
 

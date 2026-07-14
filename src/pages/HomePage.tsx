@@ -8,9 +8,10 @@ import TextStream from "../components/TextStream.tsx"
 import TypeWriter from "../components/TypeWriter.tsx"
 import {useNavigate} from "react-router-dom"
 import CareerTimeline from "../components/CareerTimeline.tsx"
+import {useMediaQuery} from "../hooks/useMediaQuery.tsx"
+import {PROJECTS_ROUTE} from "../utility/routes.ts"
 import {type Project, TOP} from "../utility/projects.ts"
 import {Swiper, SwiperSlide} from "swiper/react"
-import {PROJECTS_ROUTE} from "../utility/routes.ts"
 import {Pagination, EffectCoverflow, Autoplay, Navigation} from "swiper/modules"
 
 const GREETINGS: string[] = [
@@ -40,6 +41,8 @@ const SOCIALS: Social[] = [
 export default function HomePage() {
     
     const navigate = useNavigate()
+    
+    const isMobile: boolean = useMediaQuery("max-width: 768px")
     
     return (
         <div className={styles.main}>
