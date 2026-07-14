@@ -175,12 +175,21 @@ b {
         display: flex;
         align-items: center;
         flex-direction: column;
+        
+        @media (max-width: 964px) {
+            width: 100%;
+            max-width: 450px;
+        }
     }
     
     .projectsDescription {
         margin: 1rem 0 0;
         font-size: 1.25rem;
         text-align: center;
+        
+        @media (max-width: 964px) {
+            margin: 1.5rem 2rem 0;
+        }
     }
     
     .slider {
@@ -193,6 +202,10 @@ b {
         position: relative;
         background-color: #303030;
         border-radius: 1rem;
+        
+        @media (max-width: 964px) {
+            width: calc(100% - 4rem);
+        }
         
         &::before,
         &::after {
@@ -222,6 +235,10 @@ b {
             border-radius: 1rem;
             overflow: hidden;
             box-sizing: border-box;
+            
+            @media (max-width: 768px) {
+                width: 200px;
+            }
         }
     }
     
@@ -243,14 +260,17 @@ b {
         
         img {
             width: 200px;
-            height: 200px;
             border-radius: 1rem;
         }
         
         p {
             width: 100%;
+            max-width: 300px;
             margin-top: 1rem;
             overflow-wrap: break-word;
+        }
+        
+        @media (max-width: 768px) {
         }
     }
     
@@ -330,6 +350,13 @@ b {
         align-items: center;
         flex-direction: column;
         
+        @media (max-width: 768px) {
+            width: calc(100% - 2rem);
+            text-align: center;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+        
         .grid {
             gap: 1rem;
             width: calc(100% - 4rem);
@@ -343,6 +370,12 @@ b {
             justify-content: space-evenly;
             background-color: #202020;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            
+            @media (max-width: 768px) {
+                padding: 1rem;
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                grid-auto-rows: 150px;
+            }
             
             .imgWrapper {
                 overflow: hidden;
@@ -402,6 +435,11 @@ b {
     justify-content: space-between;
     background-color: #01356D;
     backdrop-filter: blur(1rem);
+    
+    @media (max-width: 768px) {
+        padding: 1rem;
+        width: calc(100% - 2rem);
+    }
     
     p {
         margin: 0;

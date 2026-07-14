@@ -43,6 +43,7 @@ export default function HomePage() {
     const navigate = useNavigate()
     
     const isMobile: boolean = useMediaQuery("max-width: 768px")
+    const isTablet: boolean = useMediaQuery("max-width: 964px")
     
     return (
         <div className={styles.main}>
@@ -113,7 +114,7 @@ export default function HomePage() {
                         pagination={{
                             clickable: true,
                         }}
-                        slidesPerView={3}
+                        slidesPerView={isTablet ? 1 : 3}
                         centeredSlides={true}
                         coverflowEffect={{
                             rotate: -15,
