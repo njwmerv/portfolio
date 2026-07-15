@@ -21,11 +21,9 @@ export default function ViewPage() {
                 }
                 
                 wakeLock = lock
-                console.log("Screen Wake Lock is active!")
+                // console.log("Screen Wake Lock is active!")
             }
-            catch (err: any) { 
-                console.error(`Wake Lock error: ${err.name}, ${err.message}`)
-            }
+            catch { /* empty */ }
         }
         
         requestWakeLock()
@@ -51,7 +49,7 @@ export default function ViewPage() {
             if (wakeLock !== null) {
                 wakeLock.release()
                 wakeLock = null
-                console.log("Screen Wake Lock released.")
+                // console.log("Screen Wake Lock released.")
             }
         }
     }, [])

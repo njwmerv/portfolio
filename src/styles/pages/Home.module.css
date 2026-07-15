@@ -401,6 +401,7 @@ b {
     .container {
         width: 1200px;
         max-width: calc(100dvw - 6rem);
+        margin: auto;
         opacity: 0.95;
         padding-left: 3rem;
         padding-right: 3rem;
