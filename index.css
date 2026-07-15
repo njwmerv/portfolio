@@ -1,0 +1,14 @@
+html, body {
+    margin: 0;
+    
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    
+    font-family: "Ubuntu Mono", monospace;
+    
+    background-color: black;
+}
+
+html::-webkit-scrollbar, body::-webkit-scrollbar {
+    display: none;
+}

@@ -1,0 +1,39 @@
+.wakeLockToast {
+    left: 50dvw;
+    bottom: 50dvh;
+    position: fixed;
+    text-align: center;
+    
+    backdrop-filter: blur(1rem);
+    background-color: rgba(48, 48, 48, 0.6);
+    -webkit-backdrop-filter: blur(1rem);
+    
+    color: #FCF6E1;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4rem;
+    font-size: 1rem;
+    
+    pointer-events: none;
+    z-index: 100;
+    
+    animation: toast-sequence 4s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+@keyframes toast-sequence {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, 30px);
+    }
+    10% {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+    85% {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, 15px);
+    }
+}

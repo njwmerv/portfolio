@@ -1,0 +1,126 @@
+.calendar {
+    height: 360px;
+    align-self: flex-start;
+    background-color: #FCF6E1;
+    border-radius: 1rem;
+}
+
+.yearStamps,
+.monthStamps {
+    width: 100%;
+    height: 2rem;
+    margin: 0;
+    z-index: 999;
+    position: relative;
+}
+.yearStamps {
+    .timestamp {
+        height: 2rem;
+        padding: 0.25rem 0.25rem 0;
+        font-size: 1.25rem;
+    }
+    
+    .timestampContainer {
+        border-left-width: 0;
+    }
+}
+.monthStamps {
+    .timestamp {
+        font-size: 1rem;
+        height: 1rem;
+        border-bottom-left-radius: 0.5rem;
+        border-bottom-right-radius: 0.5rem;
+    }
+}
+
+.timestampContainer {
+    top: 0;
+    color: #FCF6E1;
+    margin: 0;
+    position: absolute;
+    box-sizing: border-box;
+    white-space: nowrap;
+    border-left: 2px dashed rgb(0, 0, 0, 0.1);
+    
+    .timestamp {
+        margin: 0;
+        background-color: #01356D;
+    }
+}
+
+.schoolTerms {
+    width: 100%;
+    height: 6rem;
+    bottom: 2rem;
+    z-index: 999;
+    position: relative;
+}
+
+.workTerms {
+    width: 100%;
+    height: 6rem;
+    z-index: 999;
+    position: relative;
+}
+
+.durationContainer {
+    top: 66px;
+    color: #303030;
+    margin: 0;
+    height: 6rem;
+    padding: 1rem;
+    overflow: hidden;
+    position: absolute;
+    isolation: isolate;
+    box-sizing: border-box;
+    white-space: nowrap;
+    border-left: 0 dashed rgb(0, 0, 0, 0.1);
+    border-radius: 1rem;
+    
+    .durationLabel {
+        margin: 0;
+        z-index: 999;
+    }
+    
+    .durationDescription {
+        margin: 0;
+        z-index: 999;
+    }
+    
+    img {
+        top: 4px;
+        right: 8px;
+        height: 88px;
+        opacity: 0.25;
+        z-index: -1;
+        position: absolute;
+        object-fit: cover;
+    }
+}
+
+.today {
+    top: -256px;
+    width: fit-content;
+    height: 100%;
+    margin: 0;
+    position: relative;
+    border-left-color: red;
+    border-left-style: dashed;
+    border-left-width: 0.25rem;
+    background-color: transparent;
+    
+    p {
+        top: 60px;
+        left: -100%;
+        color: #FCF6E1;
+        width: 4rem;
+        height: 1.5rem;
+        margin: 0;
+        position: relative;
+        text-align: center;
+        align-content: center;
+        background-color: red;
+        border-top-left-radius: 0.5rem;
+        border-bottom-left-radius: 0.5rem;
+    }
+}

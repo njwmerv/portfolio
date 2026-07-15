@@ -1,0 +1,113 @@
+#root, body {
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex-grow: 1;
+    height: 0;
+    position: relative;
+}
+
+.header {
+    top: 0;
+    z-index: 999;
+    position: sticky;
+    background-color: #01356D;
+    opacity: 0.9;
+    border-bottom-style: solid;
+    border-bottom-width: 0.2rem;
+    border-bottom-color: #FCF6E1;
+}
+
+.navBar {
+    color: #FCF6E1;
+    width: 100%;
+    height: 5rem;
+    backdrop-filter: blur(1rem);
+    
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.navLink {
+    color: inherit;
+    text-decoration: none;
+    transition: opacity 0.2s ease-out;
+    
+    &:hover {
+        opacity: 0.5;
+    }
+}
+
+.name {
+    font-size: 3rem;
+    font-weight: 800;
+    
+    margin-left: 2rem;
+    
+    @media (max-width: 768px) {
+        margin-left: 1rem;
+    }
+}
+
+.bar {
+    margin-left: 2rem;
+    margin-right: 2rem;
+    width: 0.2rem;
+    height: 2.5rem;
+    background-color: #FCF6E1;
+    
+    @media (max-width: 768px) {
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+}
+
+.notName {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.otherLinks {
+    font-size: 1.25rem;
+    font-weight: 800;
+    margin-right: 2rem;
+    
+    @media (max-width: 768px) {
+        margin-right: 1rem;
+    }
+}
+
+.viewHeader {
+    top: 0;
+    left: 0;
+    width: 100dvw;
+    height: 5rem;
+    position: fixed;
+    transition: opacity 1s ease;
+    
+    .navBar {
+        opacity: 1;
+        transform: translateY(0);
+        transition: all 1s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+    
+    @media (hover: hover) and (pointer: fine) {
+        opacity: 0;
+        
+        .navBar {
+            opacity: 0;
+            transform: translateY(-100%);
+        }
+        
+        &:hover, &:hover .navBar {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+}
