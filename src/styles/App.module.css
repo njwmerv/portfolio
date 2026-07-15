@@ -43,6 +43,10 @@ main {
     font-weight: 800;
     
     margin-left: 2rem;
+    
+    @media (max-width: 768px) {
+        margin-left: 1rem;
+    }
 }
 
 .bar {
@@ -51,6 +55,11 @@ main {
     width: 0.2rem;
     height: 2.5rem;
     background-color: #FCF6E1;
+    
+    @media (max-width: 768px) {
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
 }
 
 .notName {

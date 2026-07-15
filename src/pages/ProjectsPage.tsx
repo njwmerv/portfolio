@@ -1,13 +1,14 @@
 import {type ChangeEvent, useMemo, useState} from "react"
 import Select from "react-select"
 import styles from "../styles/pages/Projects.module.css"
-import type {MultiValue, StylesConfig} from "react-select"
+import ProjectCell from "../components/ProjectCell.tsx"
 import {type Project, PROJECTS, TAGS} from "../utility/projects.ts"
+import type {MultiValue, StylesConfig} from "react-select"
 
 type OptionType = { label: string, value: string }
 
 const tags: OptionType[] = TAGS.map((aTag) => ({
-    label: aTag.name, value: aTag.name,
+    label: `${aTag.name} (${aTag.count})`, value: aTag.name,
 }))
 
 const tagInput: StylesConfig = {
@@ -34,7 +35,7 @@ export default function ProjectsPage() {
         let filtered: Project[] = [...PROJECTS]
         
         if (searchString) {
-            const lowerSearch = searchString.toLowerCase();
+            const lowerSearch = searchString.toLowerCase()
             filtered = filtered.filter((aProject: Project) => aProject.name.toLowerCase().includes(lowerSearch))
         }
         
@@ -63,6 +64,7 @@ export default function ProjectsPage() {
                             isMulti={true}
                             options={tags}
                             value={selectedTags}
+                            placeholder="Select tags..."
                             onChange={(newValue: MultiValue<unknown>) => setSelectedTags((newValue || []) as MultiValue<OptionType>)}
                             styles={tagInput}
                             closeMenuOnSelect={false}
@@ -74,29 +76,11 @@ export default function ProjectsPage() {
                 <p className={styles.empty}>That doesn&#39;t exist... (YET!)</p>
                 :
                 <div className={styles.grid}>
-                    {filteredProjects.map((aProject: Project, i: number) => (
-                        <div className={styles.container} key={`project-${i}`}>
-                            <div className={styles.content}>
-                                <p className={styles.title}>{aProject.name}</p>
-                                
-                                <img alt={aProject.name}
-                                     src={aProject.img}
-                                     className={styles.image}
-                                />
-                                
-                                <div className={styles.description}>{aProject.description}</div>
-                            </div>
-                            
-                            {/*{aProject.url ?*/}
-                            {/*    <PillButton buttonStyle={styles.button}*/}
-                            {/*                label={buttonText}*/}
-                            {/*                onPress={() => openInNewTab(projectLink)}*/}
-                            {/*    />*/}
-                            {/*    :*/}
-                            {/*    null*/}
-                            {/*}*/}
-                        </div>
-                    ))}
+                    {filteredProjects.map((aProject: Project, i: number) => {
+                        return (
+                            <ProjectCell key={`project-${i}`} project={aProject} />
+                        )
+                    })}
                 </div>
             }
         </div>

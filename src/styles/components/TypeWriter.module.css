@@ -11,12 +11,18 @@
     top: 0;
     left: 0;
     position: absolute;
+    white-space: nowrap;
+    
+    @media (max-width: 768px) {
+        width: 100%;
+        text-align: center;
+    }
 }
 
 .cursor {
     font: inherit;
+    position: absolute;
     margin-left: 0.1ch;
-    display: inline-block;
 }
 
 .blink {
