@@ -76,7 +76,7 @@ function DayNightScene() {
     const skyMaterialRef = useRef<THREE.ShaderMaterial>(null)
     const ambientLightRef = useRef<THREE.AmbientLight>(null)
     
-    const earthTexture = useTexture('/world_map_blob.jpg')
+    const earthTexture = useTexture('/world_map_blob.webp')
     
     const uniforms = useMemo(() => ({
         sunDirection: { value: new THREE.Vector3() },

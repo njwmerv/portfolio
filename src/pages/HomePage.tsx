@@ -46,27 +46,27 @@ interface OtherStuff {
 
 const OTHER_STUFF: OtherStuff[] = [
     {
-        img: "/baking.jpeg",
+        img: "/baking.webp",
         caption: "Me when I bake",
     },
     {
-        img: "/garden.jpg",
+        img: "/garden.webp",
         caption: "At the Botanical Gardens in Toronto",
     },
     {
-        img: "/hike.jpg",
+        img: "/hike.webp",
         caption: "On a hike along the Dragon's Back in Hong Kong",
     },
     {
-        img: "/lotr.jpg",
+        img: "/lotr.webp",
         caption: "Playing a DnD-inspired Lord of the Ring's game with friends",
     },
     {
-        img: "/pets.jpg",
+        img: "/pets.webp",
         caption: "Nutmeg (cat) & Wendy (dog) playing",
     },
     {
-        img: "/pirate.jpg",
+        img: "/pirate.webp",
         caption: "I'm the king of the world!",
     },
 ]
@@ -83,7 +83,7 @@ export default function HomePage() {
                 <div className={styles.introContainer}>
                     <div className={`${styles.introSection} ${styles.headshotContainer}`}>
                         <img
-                            src={"/2048me.jpg"}
+                            src={"/2048me.webp"}
                             alt={"Image of Mari Montoya"}
                             className={styles.headshot}
                         />
