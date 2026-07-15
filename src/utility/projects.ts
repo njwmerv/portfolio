@@ -59,7 +59,7 @@ export const PROJECTS: Project[] = [
     },
     {
         "name": "Portfolio Website",
-        "img": "https://i.imgur.com/o5P365H.png",
+        "img": "/portfolio-2.png",
         "url": "https://github.com/njwmerv/portfolio",
         "description": "My personal website with my projects and career so far. Please explore as much as you want :)",
         "tags": [

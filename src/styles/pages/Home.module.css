@@ -261,6 +261,7 @@ b {
         
         .swiperSlide {
             width: 50%;
+            user-select: none;
             
             background-color: #9BAE81;
             border-radius: 1rem;
