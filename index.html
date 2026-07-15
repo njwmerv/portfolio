@@ -1,18 +1,37 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8" />
-        <link rel="icon" type="image/svg+xml" href="/github-logo-2.png" />
-        <link rel="stylesheet" href="./index.css" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Mari's Portfolio</title>
-        
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="#000000" />
+        <meta name="description"
+              content="Personal website and portfolio of Mari Montoya"
+        />
+        <!-- Controls what shows up when you paste the link on LinkedIn, Facebook, Discord, etc. -->
+        <meta property="og:title" content="Mari Montoya | Portfolio" />
+        <meta property="og:description" content="Personal website and portfolio of Mari Montoya" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://njwmerv.com" />
+        <!-- Font from Google Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+        <!--
+        manifest.json provides metadata used when your web app is installed on a
+        user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+        -->
+        <link rel="manifest" href="/manifest.json" />
+        
+        <link rel="icon" type="image/png" href="/github-logo-2.png" />
+        <link rel="apple-touch-icon" type="image/png" href="/github-logo-2.png" />
+        <link rel="preload" as="image" href="/2048me.webp">
+        
+        <title>Mari Montoya Portfolio</title>
     </head>
     <body>
+        <noscript>You need to enable JavaScript to run this app.</noscript>
         <div id="root"></div>
-        <script type="module" src="./src/main.tsx"></script>
+        <script type="module" src="/src/main.tsx"></script>
     </body>
 </html>
+
