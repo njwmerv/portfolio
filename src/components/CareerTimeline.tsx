@@ -1,4 +1,5 @@
-import type {CSSProperties} from "react"
+import * as React from "react"
+import {type CSSProperties, useRef, useState} from "react"
 import styles from "../styles/components/CareerTimeline.module.css"
 import {TIMESPAN, MONTHS, EXPERIENCES, SCHOOL_TERMS, type Experience} from "../utility/experiences.ts"
 
@@ -66,7 +67,7 @@ const Duration = ({
             width: `${width}px`,
             ...style,
         }}>
-            <img src={img} alt={""} loading="lazy" />
+            <img src={img} alt={""} loading="lazy" draggable={false} />
             
             <p className={styles.durationLabel}>{company}</p>
             
@@ -82,8 +83,50 @@ export default function CareerTimeline() {
     const partialOffset: number = Math.floor(NOW.getDate() * monthsWidth / getNumDaysInMonth(NOW))
     const todayOffset: number = durationInMonths(TIMESPAN.start, NOW) * monthsWidth + partialOffset
     
+    const scrollContainerRef = useRef<HTMLDivElement>(null)
+    const [isDragging, setIsDragging] = useState<boolean>(false)
+    const startX = useRef(0)
+    const scrollLeft = useRef(0)
+    
+    const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
+        if (!scrollContainerRef.current) return
+        setIsDragging(true)
+        startX.current = e.pageX - scrollContainerRef.current.offsetLeft
+        scrollLeft.current = scrollContainerRef.current.scrollLeft
+    }
+    
+    const handleMouseLeave = () => {
+        setIsDragging(false)
+    }
+    
+    const handleMouseUp = () => {
+        setIsDragging(false)
+    }
+    
+    const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+        if (!isDragging || !scrollContainerRef.current) return
+        e.preventDefault()
+        
+        const x = e.pageX - scrollContainerRef.current.offsetLeft
+        const walk = (x - startX.current)
+        
+        scrollContainerRef.current.scrollLeft = scrollLeft.current - walk
+    }
+    
     return (
-        <div className={styles.calendar} style={{ width: `${MONTHS * monthsWidth}px`}}>
+        <div ref={scrollContainerRef}
+             onMouseDown={handleMouseDown}
+             onMouseLeave={handleMouseLeave}
+             onMouseUp={handleMouseUp}
+             onMouseMove={handleMouseMove}
+             style={{
+                 overflowX: "auto",
+                 width: "100%",
+                 cursor: isDragging ? "grabbing" : "grab",
+                 userSelect: "none" // Prevents text selection glitches when dragging
+             }}
+        >
+            <div className={styles.calendar} style={{ width: `${MONTHS * monthsWidth}px`}}>
             <div className={styles.yearStamps}>
                 <Timestamp label={"2023"} time={new Date(2023, 8)}
                            style={{width: `${4 * monthsWidth}px`}}
@@ -176,6 +219,7 @@ export default function CareerTimeline() {
             <div className={styles.today} style={{left: `${todayOffset}px`}}>
                 <p>Today</p>
             </div>
+        </div>
         </div>
     )
 }
