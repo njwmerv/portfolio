@@ -107,8 +107,8 @@ export default function CareerTimeline() {
         if (!isDragging || !scrollContainerRef.current) return
         e.preventDefault()
         
-        const x = e.pageX - scrollContainerRef.current.offsetLeft
-        const walk = (x - startX.current)
+        const x: number = e.pageX - scrollContainerRef.current.offsetLeft
+        const walk: number = (x - startX.current)
         
         scrollContainerRef.current.scrollLeft = scrollLeft.current - walk
     }
@@ -123,7 +123,7 @@ export default function CareerTimeline() {
                  overflowX: "auto",
                  width: "100%",
                  cursor: isDragging ? "grabbing" : "grab",
-                 userSelect: "none" // Prevents text selection glitches when dragging
+                 userSelect: "none"
              }}
         >
             <div className={styles.calendar} style={{ width: `${MONTHS * monthsWidth}px`}}>

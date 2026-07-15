@@ -105,7 +105,7 @@
     margin: 0;
     position: relative;
     border-left-color: red;
-    border-left-style: solid;
+    border-left-style: dashed;
     border-left-width: 0.25rem;
     background-color: transparent;
     
