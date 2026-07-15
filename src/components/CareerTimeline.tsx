@@ -166,11 +166,11 @@ export default function CareerTimeline() {
             </div>
             
             <div className={styles.schoolTerms}>
-                {SCHOOL_TERMS.map((term) => <Duration {...term} />)}
+                {SCHOOL_TERMS.map((term: Experience, i: number) => <Duration key={`school-${i}`} {...term} />)}
             </div>
             
             <div className={styles.workTerms}>
-                {EXPERIENCES.map((exp) => <Duration {...exp} />)}
+                {EXPERIENCES.map((exp: Experience, i: number) => <Duration key={`work-${i}`} {...exp} />)}
             </div>
             
             <div className={styles.today} style={{left: `${todayOffset}px`}}>

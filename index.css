@@ -5,6 +5,8 @@ html, body {
     -ms-overflow-style: none;
     
     font-family: "Ubuntu Mono", monospace;
+    
+    background-color: black;
 }
 
 html::-webkit-scrollbar, body::-webkit-scrollbar {

@@ -13,7 +13,7 @@ import {PROJECTS_ROUTE} from "../utility/routes.ts"
 import {type Project, TOP} from "../utility/projects.ts"
 import {Swiper, SwiperSlide} from "swiper/react"
 import {Pagination, EffectCoverflow, Autoplay, Navigation} from "swiper/modules"
-import CaptionedImage from "../components/CaptionedImage.tsx";
+import CaptionedImage from "../components/CaptionedImage.tsx"
 
 const GREETINGS: string[] = [
     "Hey! I'm:",
@@ -112,10 +112,9 @@ export default function HomePage() {
                         
                         <div className={styles.socials}>
                             {SOCIALS.map((social) =>
-                                <a href={social.href} target={"_blank"}>
+                                <a href={social.href} target={"_blank"} key={social.src}>
                                     <img
                                         alt={social.alt}
-                                        key={social.src}
                                         src={social.src}
                                         color={"#FCF6E1"}
                                         className={styles.socialsButton}
@@ -157,7 +156,7 @@ export default function HomePage() {
                         }}
                     >
                         {TOP.map(({name, img, description}: Project) =>
-                            <SwiperSlide className={styles.swiperSlide}>
+                            <SwiperSlide className={styles.swiperSlide} key={name}>
                                 <div className={styles.topProjectContainer}>
                                     <h2>{name}</h2>
                                     

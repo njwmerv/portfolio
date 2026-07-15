@@ -71,4 +71,38 @@ main {
 .otherLinks {
     font-size: 1.25rem;
     font-weight: 800;
+    margin-right: 2rem;
+    
+    @media (max-width: 768px) {
+        margin-right: 1rem;
+    }
+}
+
+.viewHeader {
+    top: 0;
+    left: 0;
+    width: 100dvw;
+    height: 5rem;
+    position: fixed;
+    transition: opacity 1s ease;
+    
+    .navBar {
+        opacity: 1;
+        transform: translateY(0);
+        transition: all 1s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+    
+    @media (hover: hover) and (pointer: fine) {
+        opacity: 0;
+        
+        .navBar {
+            opacity: 0;
+            transform: translateY(-100%);
+        }
+        
+        &:hover, &:hover .navBar {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
 }

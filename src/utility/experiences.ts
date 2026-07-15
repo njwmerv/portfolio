@@ -1,4 +1,4 @@
-import type {CSSProperties} from "react";
+import type {CSSProperties} from "react"
 
 const FALL_START: (year: number) => Date = (year: number) => new Date(year, 8, 1)
 const FALL_END: (year: number) => Date = (year: number) => new Date(year, 11, 31)
