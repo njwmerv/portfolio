@@ -36,6 +36,11 @@ main {
 .navLink {
     color: inherit;
     text-decoration: none;
+    transition: opacity 0.2s ease-out;
+    
+    &:hover {
+        opacity: 0.5;
+    }
 }
 
 .name {

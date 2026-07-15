@@ -175,6 +175,7 @@ export default function HomePage() {
                         label={"See More"}
                         onClick={() => navigate(PROJECTS_ROUTE)}
                         onMouseDown={() => navigate(PROJECTS_ROUTE)}
+                        textStyle={styles.seeMoreText}
                         buttonStyle={styles.seeMore}
                     />
                 </div>
