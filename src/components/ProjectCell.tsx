@@ -1,4 +1,5 @@
 import styles from "../styles/components/ProjectCell.module.css"
+import Button from "./Button.tsx"
 import type {Project} from "../utility/projects.ts"
 import {useMediaQuery} from "../hooks/useMediaQuery.tsx"
 
@@ -33,6 +34,18 @@ export default function ProjectCell({
                                 )
                             })}
                         </div>
+                        
+                        {project.url ?
+                            <Button
+                                label={"See More"}
+                                onClick={() => window.open(project.url, "_blank")}
+                                onMouseDown={() => window.open(project.url, "_blank")}
+                                textStyle={styles.seeMoreText}
+                                buttonStyle={styles.seeMore}
+                            />
+                            :
+                            null
+                        }
                     </div>
                 </div>
             </div>
@@ -59,14 +72,17 @@ export default function ProjectCell({
                     </div>
                 </div>
                 
-                {/*{project.url ?*/}
-                {/*    <PillButton buttonStyle={styles.button}*/}
-                {/*                label={buttonText}*/}
-                {/*                onPress={() => openInNewTab(projectLink)}*/}
-                {/*    />*/}
-                {/*    :*/}
-                {/*    null*/}
-                {/*}*/}
+                {project.url ?
+                    <Button
+                        label={"See More"}
+                        onClick={() => window.open(project.url, "_blank")}
+                        onMouseDown={() => window.open(project.url, "_blank")}
+                        textStyle={styles.seeMoreText}
+                        buttonStyle={styles.seeMore}
+                    />
+                    :
+                    null
+                }
             </div>
         )
     )

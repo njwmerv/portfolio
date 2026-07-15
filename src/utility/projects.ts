@@ -211,6 +211,10 @@ export const PROJECTS: Project[] = [
     },
 ].reverse()
 
+PROJECTS.forEach((p: Project) => {
+    p.tags.sort((a: string, b: string) => a.length - b.length)
+})
+
 export const TOP: Project[] = PROJECTS.filter((project: Project) => project.top)
 
 const tags: Map<string, number> = PROJECTS.reduce((fullTags: Map<string, number>, project: Project) => {
