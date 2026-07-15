@@ -66,7 +66,7 @@ const Duration = ({
             width: `${width}px`,
             ...style,
         }}>
-            <img src={img} alt={""} />
+            <img src={img} alt={""} loading="lazy" />
             
             <p className={styles.durationLabel}>{company}</p>
             

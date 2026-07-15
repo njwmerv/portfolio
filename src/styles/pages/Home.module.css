@@ -78,10 +78,10 @@ b {
     
     .headshot {
         width: 320px;
+        height: 320px;
         border-radius: 50%;
         
         @media (max-width: 768px) {
-            /*width: 250px;*/
             width: 80%;
             max-width: 320px;
         }
@@ -156,9 +156,11 @@ b {
     
     .socialsButton {
         width: 72px;
+        height: 72px;
         
         @media (max-width: 768px) {
             width: 60px;
+            height: 60px;
         }
     }
 }
@@ -272,6 +274,7 @@ b {
         
         img {
             width: 200px;
+            height: 200px;
             border-radius: 1rem;
         }
         

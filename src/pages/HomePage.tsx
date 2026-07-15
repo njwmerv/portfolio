@@ -163,6 +163,7 @@ export default function HomePage() {
                                     
                                     <img alt={`${name} project image`}
                                          src={img}
+                                         loading="lazy"
                                     />
                                     
                                     <p>{description}</p>

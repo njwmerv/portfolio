@@ -19,7 +19,7 @@ export default function CaptionedImage({
     
     return (
         <div className={styles.imgWrapper} onMouseDown={toggleCaption}>
-            <img alt={alt} src={img} />
+            <img alt={alt} src={img} loading="lazy" />
             
             <div className={`${styles.overlay} ${showCaption ? styles.show : ''}`}>
                 <p>{caption}</p>

@@ -17,6 +17,7 @@ export default function ProjectCell({
                 <div className={styles.content}>
                     <img alt={project.name}
                          src={project.img}
+                         loading="lazy"
                          className={styles.image}
                     />
                     
@@ -43,6 +44,7 @@ export default function ProjectCell({
                     
                     <img alt={project.name}
                          src={project.img}
+                         loading="lazy"
                          className={styles.image}
                     />
                     
