@@ -13,6 +13,7 @@ import {PROJECTS_ROUTE} from "../utility/routes.ts"
 import {type Project, TOP} from "../utility/projects.ts"
 import {Swiper, SwiperSlide} from "swiper/react"
 import {Pagination, EffectCoverflow, Autoplay, Navigation} from "swiper/modules"
+import CaptionedImage from "../components/CaptionedImage.tsx";
 
 const GREETINGS: string[] = [
     "Hey! I'm:",
@@ -38,11 +39,42 @@ const SOCIALS: Social[] = [
     {alt: "Link to Email/montoya.nicanor04@gmail.com", src: "/email-logo-2.png", href: "mailto:montoya.nicanor04@gmail.com"},
 ]
 
+interface OtherStuff {
+    img: string
+    caption: string
+}
+
+const OTHER_STUFF: OtherStuff[] = [
+    {
+        img: "/baking.jpeg",
+        caption: "Me when I bake",
+    },
+    {
+        img: "/garden.jpg",
+        caption: "At the Botanical Gardens in Toronto",
+    },
+    {
+        img: "/hike.jpg",
+        caption: "On a hike along the Dragon's Back in Hong Kong",
+    },
+    {
+        img: "/lotr.jpg",
+        caption: "Playing a DnD-inspired Lord of the Ring's game with friends",
+    },
+    {
+        img: "/pets.jpg",
+        caption: "Nutmeg (cat) & Wendy (dog) playing",
+    },
+    {
+        img: "/pirate.jpg",
+        caption: "I'm the king of the world!",
+    },
+]
+
 export default function HomePage() {
     
     const navigate = useNavigate()
     
-    const isMobile: boolean = useMediaQuery("max-width: 768px")
     const isTablet: boolean = useMediaQuery("max-width: 964px")
     
     return (
@@ -170,30 +202,15 @@ export default function HomePage() {
                     <p className={styles.description}>Here's the other stuff I get up to besides school & work!</p>
                     
                     <div className={styles.grid}>
-                        <div className={styles.imgWrapper}>
-                            <img alt={"Me when I bake"} src={"/baking.jpeg"} />
-                            <div className={styles.overlay}><p>Me when I bake</p></div>
-                        </div>
-                        <div className={styles.imgWrapper}>
-                            <img alt={"At the Botanical Gardens in Toronto"} src={"/garden.jpg"} />
-                            <div className={styles.overlay}><p>At the Botanical Gardens in Toronto</p></div>
-                        </div>
-                        <div className={styles.imgWrapper}>
-                            <img alt={"On a hike along the Dragon's Back in Hong Kong"} src={"/hike.jpg"} />
-                            <div className={styles.overlay}><p>On a hike along the Dragon's Back in Hong Kong</p></div>
-                        </div>
-                        <div className={styles.imgWrapper}>
-                            <img alt={"Playing a DnD-inspired Lord of the Ring's game with friends"} src={"/lotr.jpg"} />
-                            <div className={styles.overlay}><p>Playing a DnD-inspired Lord of the Ring's game with friends</p></div>
-                        </div>
-                        <div className={styles.imgWrapper}>
-                            <img alt={"Nutmeg (cat) & Wendy (dog) playing"} src={"/pets.jpg"} />
-                            <div className={styles.overlay}><p>Nutmeg (cat) & Wendy (dog) playing</p></div>
-                        </div>
-                        <div className={styles.imgWrapper}>
-                            <img alt={"I'm the king of the world!"} src={"/pirate.jpg"} />
-                            <div className={styles.overlay}><p>I'm the king of the world!</p></div>
-                        </div>
+                        {OTHER_STUFF.map((os: OtherStuff, i: number) => {
+                            return (
+                                <CaptionedImage key={`other-stuff-${i}`}
+                                                img={os.img}
+                                                alt={os.caption}
+                                                caption={os.caption}
+                                />
+                            )
+                        })}
                     </div>
                     
                     {/*<Button*/}

@@ -9,14 +9,17 @@ b {
 
 .main {
     width: 100%;
-    font-size: 16px;
+    font-size: 1rem;
 }
 
 .frame {
     color: #FCF6E1;
     width: 100%;
     height: 100dvh;
-    position: relative;
+    
+    @media (max-width: 768px) {
+        height: auto;
+    }
 }
 
 .intro {
@@ -47,8 +50,10 @@ b {
         
         @media (max-width: 768px) {
             width: 90dvw;
+            bottom: 0;
+            height: 85dvh;
             max-width: 360px;
-            height: 95dvh;
+            margin-top: 2rem;
             flex-direction: column;
         }
     }
@@ -67,6 +72,7 @@ b {
         
         @media (max-width: 768px) {
             height: 250px;
+            margin-bottom: 2rem;
         }
     }
     
@@ -161,6 +167,11 @@ b {
     width: 100%;
     height: 100dvh;
     
+    @media (max-width: 768px) {
+        height: auto;
+        margin-top: 20dvh;
+    }
+    
     .projectsContainer {
         width: fit-content;
         height: 550px;
@@ -179,6 +190,7 @@ b {
         @media (max-width: 964px) {
             width: 100%;
             max-width: 450px;
+            margin-top: 20dvh;
         }
     }
     
@@ -282,6 +294,11 @@ b {
 }
 
 .experiences {
+    @media (max-width: 768px) {
+        height: auto;
+        margin-top: 20dvh;
+    }
+    
     .container {
         width: 100%;
         height: 500px;
@@ -302,6 +319,10 @@ b {
             overflow-y: hidden;
             scrollbar-width: thin;
             scrollbar-color: #666666 transparent;
+            
+            @media (max-width: 768px) {
+                width: calc(100% - 5%);
+            }
         }
         .scrollArea::-webkit-scrollbar {
             height: 6px;
@@ -330,17 +351,28 @@ b {
         margin: 1rem 0 1rem;
         font-size: 1.25rem;
         text-align: center;
+        
+        @media (max-width: 768px) {
+            margin: 1rem;
+        }
     }
 }
 
 .others {
+    @media (max-width: 768px) {
+        margin-top: 20dvh;
+        margin-bottom: 10dvh;
+    }
+    
     .container {
         width: 1200px;
+        max-width: calc(100dvw - 6rem);
         height: 600px;
         margin: auto;
         opacity: 0.95;
         padding-left: 3rem;
         padding-right: 3rem;
+        padding-bottom: 2rem;
         background-color: #303030;
         backdrop-filter: blur(1rem);
         border: 0 solid #FCF6E1;
@@ -351,10 +383,9 @@ b {
         flex-direction: column;
         
         @media (max-width: 768px) {
-            width: calc(100% - 2rem);
+            height: auto;
             text-align: center;
-            padding-left: 1rem;
-            padding-right: 1rem;
+            padding-bottom: 1.5rem;
         }
         
         .grid {
@@ -372,44 +403,10 @@ b {
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             
             @media (max-width: 768px) {
+                width: 100%;
                 padding: 1rem;
-                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
                 grid-auto-rows: 150px;
-            }
-            
-            .imgWrapper {
-                overflow: hidden;
-                position: relative;
-                border-radius: 0.5rem;
-                
-                img {
-                    width: 100%;
-                    height: 100%;
-                    display: block;
-                    object-fit: cover;
-                }
-                
-                .overlay {
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    color: #FCF6E1;
-                    width: calc(100% - 2rem);
-                    height: calc(100% - 2rem);
-                    display: flex;
-                    padding: 1rem;
-                    background: rgba(0, 0, 0, 0.7);
-                    text-align: center;
-                    align-items: center;
-                    justify-content: center;
-                    
-                    opacity: 0;
-                    transition: opacity 0.3s ease;
-                }
-                
-                &:hover .overlay {
-                    opacity: 1; /* Shows the text when hovering over the wrapper */
-                }
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             }
         }
         
