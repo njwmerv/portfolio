@@ -132,7 +132,7 @@ export default function HomePage() {
                     
                     <Swiper
                         loop={true}
-                        effect={'coverflow'}
+                        effect="coverflow"
                         modules={[EffectCoverflow, Pagination, Autoplay, Navigation]}
                         autoplay={{
                             delay: 2000,
